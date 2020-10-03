@@ -44,9 +44,12 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/nexo?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password:
+    #url: jdbc:mysql://localhost:3306/nexo?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+    #username: root
+    #password:
+    url: jdbc:mysql://localhost:3306/bufis?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=America/Santiago
+    username: nexo
+    password: 12345
     hikari:
       poolName: Hikari
       auto-commit: false
