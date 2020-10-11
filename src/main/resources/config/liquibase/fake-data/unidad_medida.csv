@@ -1,4 +1,4 @@
 id;estado;nombre;fecha_bd
-1;ACTIVO;litros;;2020-10-03T02:35:05
-2;ACTIVO;Kilogramos;;2020-10-03T02:35:05
-3;ACTIVO;Unidad(es);;2020-10-03T02:35:05
+1;ACTIVO;litros;2020-10-03T02:35:05
+2;ACTIVO;Kilogramos;2020-10-03T02:35:05
+3;ACTIVO;Unidad(es);2020-10-03T02:35:05

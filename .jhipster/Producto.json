@@ -15,13 +15,6 @@
             "relationshipType": "many-to-one",
             "otherEntityField": "id",
             "otherEntityRelationshipName": "producto"
-        },
-        {
-            "relationshipName": "productoImpuestos",
-            "otherEntityName": "productoImpuestos",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id",
-            "otherEntityRelationshipName": "producto"
         }
     ],
     "fields": [

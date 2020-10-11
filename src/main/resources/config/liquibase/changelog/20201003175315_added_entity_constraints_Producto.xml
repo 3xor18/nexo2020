@@ -20,11 +20,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="pais"/>
 
-        <addForeignKeyConstraint baseColumnNames="producto_impuestos_id"
-                                 baseTableName="producto"
-                                 constraintName="fk_producto_producto_impuestos_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="producto_impuestos"/>
-
     </changeSet>
 </databaseChangeLog>

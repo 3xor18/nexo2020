@@ -99,13 +99,6 @@
                         <option [ngValue]="paisOption.id" *ngFor="let paisOption of pais; trackBy: trackPaisById">{{paisOption.id}}</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="nexoApp.producto.productoImpuestos" for="field_productoImpuestos">Producto Impuestos</label>
-                    <select class="form-control" id="field_productoImpuestos" name="productoImpuestos" formControlName="productoImpuestosId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="productoImpuestosOption.id" *ngFor="let productoImpuestosOption of productoimpuestos; trackBy: trackProductoImpuestosById">{{productoImpuestosOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

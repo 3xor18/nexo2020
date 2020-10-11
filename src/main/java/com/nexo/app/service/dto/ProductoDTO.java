@@ -44,8 +44,6 @@ public class ProductoDTO implements Serializable {
 
     private Long elaboradoEnId;
 
-    private Long productoImpuestosId;
-
     public Long getId() {
         return id;
     }
@@ -182,14 +180,6 @@ public class ProductoDTO implements Serializable {
         this.elaboradoEnId = paisId;
     }
 
-    public Long getProductoImpuestosId() {
-        return productoImpuestosId;
-    }
-
-    public void setProductoImpuestosId(Long productoImpuestosId) {
-        this.productoImpuestosId = productoImpuestosId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -231,7 +221,6 @@ public class ProductoDTO implements Serializable {
             ", precioAlmayorDespuesde=" + getPrecioAlmayorDespuesde() +
             ", vendedor=" + getVendedorId() +
             ", elaboradoEn=" + getElaboradoEnId() +
-            ", productoImpuestos=" + getProductoImpuestosId() +
             "}";
     }
 }

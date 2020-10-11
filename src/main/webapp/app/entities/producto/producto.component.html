@@ -35,7 +35,6 @@
             <th scope="col" ><span jhiTranslate="nexoApp.producto.precioAlmayorDespuesde">Precio Almayor Despuesde</span></th>
             <th scope="col" ><span jhiTranslate="nexoApp.producto.vendedor">Vendedor</span></th>
             <th scope="col" ><span jhiTranslate="nexoApp.producto.elaboradoEn">Elaborado En</span></th>
-            <th scope="col" ><span jhiTranslate="nexoApp.producto.productoImpuestos">Producto Impuestos</span></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -64,11 +63,6 @@
                 <td>
                     <div *ngIf="producto.elaboradoEnId">
                         <a [routerLink]="['/pais', producto.elaboradoEnId , 'view' ]" >{{producto.elaboradoEnId}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="producto.productoImpuestosId">
-                        <a [routerLink]="['/producto-impuestos', producto.productoImpuestosId , 'view' ]" >{{producto.productoImpuestosId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

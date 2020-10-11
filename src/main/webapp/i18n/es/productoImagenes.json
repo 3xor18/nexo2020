@@ -1,0 +1,26 @@
+{
+  "nexoApp": {
+    "productoImagenes": {
+      "home": {
+        "title": "Producto Imagenes",
+        "createLabel": "Crear nuevo Producto Imagenes",
+        "createOrEditLabel": "Crear o editar Producto Imagenes",
+        "notFound": "No Producto Imagenes found"
+      },
+      "created": "Un nuevo Producto Imagenes ha sido creado con el identificador {{ param }}",
+      "updated": "Un Producto Imagenes ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Producto Imagenes ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Producto Imagenes {{ id }}?"
+      },
+      "detail": {
+        "title": "Producto Imagenes"
+      },
+      "estado": "Estado",
+      "fechaBd": "Fecha Bd",
+      "path": "Path",
+      "nombre": "Nombre",
+      "producto": "Producto"
+    }
+  }
+}

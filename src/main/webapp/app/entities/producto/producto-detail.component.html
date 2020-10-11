@@ -73,12 +73,6 @@
                         <a [routerLink]="['/pais', producto.elaboradoEnId, 'view']">{{producto.elaboradoEnId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="nexoApp.producto.productoImpuestos">Producto Impuestos</span></dt>
-                <dd>
-                    <div *ngIf="producto.productoImpuestosId">
-                        <a [routerLink]="['/producto-impuestos', producto.productoImpuestosId, 'view']">{{producto.productoImpuestosId}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

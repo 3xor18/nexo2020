@@ -44,6 +44,7 @@ public class ProductoImpuestos implements Serializable {
     private ZonedDateTime fechaAplicable;
 
     @ManyToOne
+    @JsonIgnoreProperties("productoImpuestos")
     private Producto producto;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

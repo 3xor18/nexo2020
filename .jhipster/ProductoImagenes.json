@@ -6,8 +6,7 @@
             "relationshipName": "producto",
             "otherEntityName": "producto",
             "relationshipType": "many-to-one",
-            "otherEntityField": "id",
-            "otherEntityRelationshipName": "productoImpuestos"
+            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -16,35 +15,23 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "nombre",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "fechaBd",
             "fieldType": "ZonedDateTime"
         },
         {
-            "fieldName": "impuestoMontoFijo",
-            "fieldType": "Boolean"
+            "fieldName": "path",
+            "fieldType": "String"
         },
         {
-            "fieldName": "montoOTasa",
-            "fieldType": "Double"
-        },
-        {
-            "fieldName": "impuestoNacional",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "fechaAplicable",
-            "fieldType": "ZonedDateTime"
+            "fieldName": "nombre",
+            "fieldType": "String"
         }
     ],
-    "changelogDate": "20201011133643",
+    "changelogDate": "20201011162219",
     "dto": "mapstruct",
     "searchEngine": false,
     "service": "serviceImpl",
-    "entityTableName": "producto_impuestos",
+    "entityTableName": "producto_imagenes",
     "databaseType": "sql",
     "jpaMetamodelFiltering": false,
     "pagination": "no"

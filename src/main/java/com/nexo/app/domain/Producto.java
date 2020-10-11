@@ -73,10 +73,6 @@ public class Producto implements Serializable {
     @JsonIgnoreProperties("productos")
     private Pais elaboradoEn;
 
-    @ManyToOne
-    @JsonIgnoreProperties("productos")
-    private ProductoImpuestos productoImpuestos;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -292,19 +288,6 @@ public class Producto implements Serializable {
 
     public void setElaboradoEn(Pais pais) {
         this.elaboradoEn = pais;
-    }
-
-    public ProductoImpuestos getProductoImpuestos() {
-        return productoImpuestos;
-    }
-
-    public Producto productoImpuestos(ProductoImpuestos productoImpuestos) {
-        this.productoImpuestos = productoImpuestos;
-        return this;
-    }
-
-    public void setProductoImpuestos(ProductoImpuestos productoImpuestos) {
-        this.productoImpuestos = productoImpuestos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

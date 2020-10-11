@@ -58,6 +58,7 @@ public class CacheConfiguration {
             createCache(cm, com.nexo.app.domain.CarritoProducto.class.getName());
             createCache(cm, com.nexo.app.domain.UnidadMedida.class.getName());
             createCache(cm, com.nexo.app.domain.ProductoImpuestos.class.getName());
+            createCache(cm, com.nexo.app.domain.ProductoImagenes.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

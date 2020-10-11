@@ -15,8 +15,6 @@ import { IPersona } from 'app/shared/model/persona.model';
 import { PersonaService } from 'app/entities/persona/persona.service';
 import { IPais } from 'app/shared/model/pais.model';
 import { PaisService } from 'app/entities/pais/pais.service';
-import { IProductoImpuestos } from 'app/shared/model/producto-impuestos.model';
-import { ProductoImpuestosService } from 'app/entities/producto-impuestos/producto-impuestos.service';
 
 @Component({
   selector: 'jhi-producto-update',
@@ -28,8 +26,6 @@ export class ProductoUpdateComponent implements OnInit {
   personas: IPersona[];
 
   pais: IPais[];
-
-  productoimpuestos: IProductoImpuestos[];
   fechaVencimientoDp: any;
 
   editForm = this.fb.group({
@@ -49,8 +45,7 @@ export class ProductoUpdateComponent implements OnInit {
     unidadMedidaVendida: [],
     precioAlmayorDespuesde: [],
     vendedorId: [],
-    elaboradoEnId: [],
-    productoImpuestosId: []
+    elaboradoEnId: []
   });
 
   constructor(
@@ -58,7 +53,6 @@ export class ProductoUpdateComponent implements OnInit {
     protected productoService: ProductoService,
     protected personaService: PersonaService,
     protected paisService: PaisService,
-    protected productoImpuestosService: ProductoImpuestosService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -82,13 +76,6 @@ export class ProductoUpdateComponent implements OnInit {
         map((response: HttpResponse<IPais[]>) => response.body)
       )
       .subscribe((res: IPais[]) => (this.pais = res), (res: HttpErrorResponse) => this.onError(res.message));
-    this.productoImpuestosService
-      .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IProductoImpuestos[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IProductoImpuestos[]>) => response.body)
-      )
-      .subscribe((res: IProductoImpuestos[]) => (this.productoimpuestos = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(producto: IProducto) {
@@ -109,8 +96,7 @@ export class ProductoUpdateComponent implements OnInit {
       unidadMedidaVendida: producto.unidadMedidaVendida,
       precioAlmayorDespuesde: producto.precioAlmayorDespuesde,
       vendedorId: producto.vendedorId,
-      elaboradoEnId: producto.elaboradoEnId,
-      productoImpuestosId: producto.productoImpuestosId
+      elaboradoEnId: producto.elaboradoEnId
     });
   }
 
@@ -147,8 +133,7 @@ export class ProductoUpdateComponent implements OnInit {
       unidadMedidaVendida: this.editForm.get(['unidadMedidaVendida']).value,
       precioAlmayorDespuesde: this.editForm.get(['precioAlmayorDespuesde']).value,
       vendedorId: this.editForm.get(['vendedorId']).value,
-      elaboradoEnId: this.editForm.get(['elaboradoEnId']).value,
-      productoImpuestosId: this.editForm.get(['productoImpuestosId']).value
+      elaboradoEnId: this.editForm.get(['elaboradoEnId']).value
     };
   }
 
@@ -173,10 +158,6 @@ export class ProductoUpdateComponent implements OnInit {
   }
 
   trackPaisById(index: number, item: IPais) {
-    return item.id;
-  }
-
-  trackProductoImpuestosById(index: number, item: IProductoImpuestos) {
     return item.id;
   }
 }

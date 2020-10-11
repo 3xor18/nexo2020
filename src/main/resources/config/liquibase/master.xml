@@ -27,6 +27,7 @@
     <include file="config/liquibase/changelog/20201003182120_added_entity_CarritoProducto.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201011132855_added_entity_UnidadMedida.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201011133643_added_entity_ProductoImpuestos.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201011162219_added_entity_ProductoImagenes.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20201003174319_added_entity_constraints_Persona.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201003174633_added_entity_constraints_Direccion.xml" relativeToChangelogFile="false"/>
@@ -38,5 +39,6 @@
     <include file="config/liquibase/changelog/20201003181853_added_entity_constraints_Carrito.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201003182120_added_entity_constraints_CarritoProducto.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201011133643_added_entity_constraints_ProductoImpuestos.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201011162219_added_entity_constraints_ProductoImagenes.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

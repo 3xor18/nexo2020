@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="nexoApp.productoImagenes.home.title">Producto Imagenes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-producto-imagenes" [routerLink]="['/producto-imagenes/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="nexoApp.productoImagenes.home.createLabel">
+            Create a new Producto Imagenes
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="productoImagenes?.length === 0">
+        <span jhiTranslate="nexoApp.productoImagenes.home.notFound">No productoImagenes found</span>
+    </div>
+    <div class="table-responsive" *ngIf="productoImagenes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImagenes.estado">Estado</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImagenes.fechaBd">Fecha Bd</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImagenes.path">Path</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImagenes.nombre">Nombre</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImagenes.producto">Producto</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let productoImagenes of productoImagenes ;trackBy: trackId">
+                <td><a [routerLink]="['/producto-imagenes', productoImagenes.id, 'view' ]">{{productoImagenes.id}}</a></td>
+                <td>{{productoImagenes.estado}}</td>
+                <td>{{productoImagenes.fechaBd | date:'medium'}}</td>
+                <td>{{productoImagenes.path}}</td>
+                <td>{{productoImagenes.nombre}}</td>
+                <td>
+                    <div *ngIf="productoImagenes.productoId">
+                        <a [routerLink]="['/producto', productoImagenes.productoId , 'view' ]" >{{productoImagenes.productoId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/producto-imagenes', productoImagenes.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/producto-imagenes', productoImagenes.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/producto-imagenes', { outlets: { popup: productoImagenes.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
