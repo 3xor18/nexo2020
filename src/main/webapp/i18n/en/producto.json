@@ -31,7 +31,8 @@
       "unidadMedidaVendida": "Unidad Medida Vendida",
       "precioAlmayorDespuesde": "Precio Almayor Despuesde",
       "vendedor": "Vendedor",
-      "elaboradoEn": "Elaborado En"
+      "elaboradoEn": "Elaborado En",
+      "comunaVenta": "Comuna Venta"
     }
   }
 }

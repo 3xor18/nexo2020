@@ -1,12 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { filter, map } from 'rxjs/operators';
-import { JhiEventManager } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
 
 import { IProducto } from 'app/shared/model/producto.model';
 import { AccountService } from 'app/core/auth/account.service';
+
+import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { ProductoService } from './producto.service';
 
 @Component({
@@ -14,26 +17,75 @@ import { ProductoService } from './producto.service';
   templateUrl: './producto.component.html'
 })
 export class ProductoComponent implements OnInit, OnDestroy {
-  productos: IProducto[];
   currentAccount: any;
+  productos: IProducto[];
+  error: any;
+  success: any;
   eventSubscriber: Subscription;
+  routeData: any;
+  links: any;
+  totalItems: any;
+  itemsPerPage: any;
+  page: any;
+  predicate: any;
+  previousPage: any;
+  reverse: any;
 
   constructor(
     protected productoService: ProductoService,
-    protected eventManager: JhiEventManager,
-    protected accountService: AccountService
-  ) {}
+    protected parseLinks: JhiParseLinks,
+    protected accountService: AccountService,
+    protected activatedRoute: ActivatedRoute,
+    protected router: Router,
+    protected eventManager: JhiEventManager
+  ) {
+    this.itemsPerPage = ITEMS_PER_PAGE;
+    this.routeData = this.activatedRoute.data.subscribe(data => {
+      this.page = data.pagingParams.page;
+      this.previousPage = data.pagingParams.page;
+      this.reverse = data.pagingParams.ascending;
+      this.predicate = data.pagingParams.predicate;
+    });
+  }
 
   loadAll() {
     this.productoService
-      .query()
-      .pipe(
-        filter((res: HttpResponse<IProducto[]>) => res.ok),
-        map((res: HttpResponse<IProducto[]>) => res.body)
-      )
-      .subscribe((res: IProducto[]) => {
-        this.productos = res;
-      });
+      .query({
+        page: this.page - 1,
+        size: this.itemsPerPage,
+        sort: this.sort()
+      })
+      .subscribe((res: HttpResponse<IProducto[]>) => this.paginateProductos(res.body, res.headers));
+  }
+
+  loadPage(page: number) {
+    if (page !== this.previousPage) {
+      this.previousPage = page;
+      this.transition();
+    }
+  }
+
+  transition() {
+    this.router.navigate(['/producto'], {
+      queryParams: {
+        page: this.page,
+        size: this.itemsPerPage,
+        sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+      }
+    });
+    this.loadAll();
+  }
+
+  clear() {
+    this.page = 0;
+    this.router.navigate([
+      '/producto',
+      {
+        page: this.page,
+        sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+      }
+    ]);
+    this.loadAll();
   }
 
   ngOnInit() {
@@ -54,5 +106,19 @@ export class ProductoComponent implements OnInit, OnDestroy {
 
   registerChangeInProductos() {
     this.eventSubscriber = this.eventManager.subscribe('productoListModification', response => this.loadAll());
+  }
+
+  sort() {
+    const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
+    if (this.predicate !== 'id') {
+      result.push('id');
+    }
+    return result;
+  }
+
+  protected paginateProductos(data: IProducto[], headers: HttpHeaders) {
+    this.links = this.parseLinks.parse(headers.get('link'));
+    this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
+    this.productos = data;
   }
 }

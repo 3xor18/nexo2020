@@ -44,6 +44,8 @@ public class ProductoDTO implements Serializable {
 
     private Long elaboradoEnId;
 
+    private Long comunaVentaId;
+
     public Long getId() {
         return id;
     }
@@ -180,6 +182,14 @@ public class ProductoDTO implements Serializable {
         this.elaboradoEnId = paisId;
     }
 
+    public Long getComunaVentaId() {
+        return comunaVentaId;
+    }
+
+    public void setComunaVentaId(Long comunaId) {
+        this.comunaVentaId = comunaId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -221,6 +231,7 @@ public class ProductoDTO implements Serializable {
             ", precioAlmayorDespuesde=" + getPrecioAlmayorDespuesde() +
             ", vendedor=" + getVendedorId() +
             ", elaboradoEn=" + getElaboradoEnId() +
+            ", comunaVenta=" + getComunaVentaId() +
             "}";
     }
 }

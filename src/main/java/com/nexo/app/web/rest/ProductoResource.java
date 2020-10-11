@@ -5,20 +5,22 @@ import com.nexo.app.web.rest.errors.BadRequestAlertException;
 import com.nexo.app.service.dto.ProductoDTO;
 
 import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -85,12 +87,16 @@ public class ProductoResource {
      * {@code GET  /productos} : get all the productos.
      *
 
+     * @param pageable the pagination information.
+
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of productos in body.
      */
     @GetMapping("/productos")
-    public List<ProductoDTO> getAllProductos() {
-        log.debug("REST request to get all Productos");
-        return productoService.findAll();
+    public ResponseEntity<List<ProductoDTO>> getAllProductos(Pageable pageable) {
+        log.debug("REST request to get a page of Productos");
+        Page<ProductoDTO> page = productoService.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**
@@ -117,25 +123,5 @@ public class ProductoResource {
         log.debug("REST request to delete Producto : {}", id);
         productoService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
-    }
-    
-    
-    /**
-     * @return el listado de productos del que esta consultando
-     */
-    @GetMapping("/productos/getmyproducts/{page}")
-    public ResponseEntity<?> getMyProducts(@PathVariable Integer page){
-    	log.debug("Get for get my products");
-    	Map<String,Object> response=new HashMap<>();
-    	Page<ProductoDTO> productos=null;
-    	try {
-    		
-	
-		} catch (Exception e) {
-			response.put("mensaje", "Error");
-			response.put("error", e.getMessage());
-			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.BAD_REQUEST);
-		}
-    	return new ResponseEntity<Page<ProductoDTO>>(productos,HttpStatus.OK);
     }
 }

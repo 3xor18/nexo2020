@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="pais"/>
 
+        <addForeignKeyConstraint baseColumnNames="comuna_venta_id"
+                                 baseTableName="producto"
+                                 constraintName="fk_producto_comuna_venta_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comuna"/>
+
     </changeSet>
 </databaseChangeLog>

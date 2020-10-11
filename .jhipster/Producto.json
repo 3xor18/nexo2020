@@ -15,6 +15,13 @@
             "relationshipType": "many-to-one",
             "otherEntityField": "id",
             "otherEntityRelationshipName": "producto"
+        },
+        {
+            "relationshipName": "comunaVenta",
+            "otherEntityName": "comuna",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "producto"
         }
     ],
     "fields": [
@@ -82,5 +89,5 @@
     "entityTableName": "producto",
     "databaseType": "sql",
     "jpaMetamodelFiltering": false,
-    "pagination": "no"
+    "pagination": "pagination"
 }

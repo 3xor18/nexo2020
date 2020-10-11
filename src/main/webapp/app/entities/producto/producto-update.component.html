@@ -99,6 +99,13 @@
                         <option [ngValue]="paisOption.id" *ngFor="let paisOption of pais; trackBy: trackPaisById">{{paisOption.id}}</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.comunaVenta" for="field_comunaVenta">Comuna Venta</label>
+                    <select class="form-control" id="field_comunaVenta" name="comunaVenta" formControlName="comunaVentaId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="comunaOption.id" *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
