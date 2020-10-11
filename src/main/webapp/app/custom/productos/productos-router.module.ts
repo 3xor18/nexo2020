@@ -2,9 +2,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { UserRouteAccessService } from '../../core/auth/user-route-access-service';
+import { ListadoProductosComponent } from './componentes/listado/listado-productos.component';
 
 /* Componentes */
-import { ListadoProductosComponent } from './componentes/listado-productos.component';
 
 const routes: Routes = [
   {

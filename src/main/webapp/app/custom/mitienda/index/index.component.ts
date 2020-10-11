@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilsService } from '../../utils/utils.service';
 
 @Component({
   selector: 'jhi-index',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class IndexComponent implements OnInit {
-  constructor() {}
+  tabInvetario = 'INVENTARIO';
+  tabTransacciones = 'TRANSACCIONES';
+  tabActiva = this.tabInvetario;
+
+  constructor(protected utilsService: UtilsService) {}
 
   ngOnInit() {}
+
+  cambiarTab(tabIn: string) {
+    this.tabActiva = tabIn;
+  }
 }
