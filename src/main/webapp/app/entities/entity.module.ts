@@ -5,14 +5,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     RouterModule.forChild([
       {
-        path: 'micarrito',
-        loadChildren: () => import('../custom/micarrito/micarrito-router.module').then(m => m.MiCarritoRoutingModule)
-      },
-      {
-        path: 'mitienda',
-        loadChildren: () => import('../custom/mitienda/mitienda.module').then(m => m.MiTiendaRoutingModule)
-      },
-      {
         path: 'persona',
         loadChildren: () => import('./persona/persona.module').then(m => m.NexoPersonaModule)
       },

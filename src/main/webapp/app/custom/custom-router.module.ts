@@ -1,16 +1,16 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { UserRouteAccessService } from '../../core/auth/user-route-access-service';
-import { IndexComponent } from './index/index.component';
+import { UserRouteAccessService } from '../core/auth/user-route-access-service';
 
 const routes: Routes = [
   {
-    path: 'micarrito',
-    component: IndexComponent,
+    path: '',
     data: {
       authorities: ['ROLE_USER'],
-      pageTitle: 'Productos en mi carrito'
+      pageTitle: 'Productos en mi tienda'
     },
+    redirectTo: '/productos',
+    pathMatch: 'full',
     canActivate: [UserRouteAccessService]
   }
 ];
@@ -19,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MiCarritoRoutingModule {}
+export class CustomRoutingModule {}
