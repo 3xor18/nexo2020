@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IProducto } from '../../../../shared/model/producto.model';
 
 @Component({
   selector: 'jhi-card-producto',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class CardProductoComponent implements OnInit {
+  @Input() producto: any;
+  product: IProducto;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.product = this.producto;
+  }
 }

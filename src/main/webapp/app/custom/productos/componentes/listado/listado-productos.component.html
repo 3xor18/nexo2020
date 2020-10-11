@@ -5,42 +5,37 @@
             [routerLink]="['/producto/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span jhiTranslate="nexoApp.producto.home.createLabel">
-                Create a new Producto
+                Agregar al inventario
             </span>
         </button>
     </h2>
-    <jhi-alert-error></jhi-alert-error>
-    <jhi-alert></jhi-alert>
     <br />
 
+    <!-- Si no tienes Productos -->
     <div class="alert alert-warning" *ngIf="productos?.length === 0">
         <span jhiTranslate="nexoApp.producto.home.notFound">No tienes productos</span>
     </div>
-    <div *ngIf="productos?.length > 0">
-        <div *ngFor="let producto of productos">
-            <button>asdda</button>
-        </div>
+    <!-- Si tiene productos -->
+    <div *ngIf="productos?.length > 0" class="row">
+        <jhi-card-producto class="col-md-4 mb-3" [producto]="producto" *ngFor="let producto of productos">
+        </jhi-card-producto>
     </div>
+
     <!-- Inicio Paginador -->
     <ul *ngIf="paginas?.length>1" class="pagination">
         <li class="page-item" *ngIf="paginador.number>0">
             <a (click)="paginar(paginador.number-1)" class="page-link">&laquo;</a>
         </li>
-
         <li [ngClass]="paginador.first?'disabled page-item':'page-item'">
             <a (click)="paginar(0)" class="page-link">Primera</a>
         </li>
-
         <li *ngFor="let pagina of paginas" class="page-item" [ngClass]="pagina-1===paginador.number?'active':''">
             <span *ngIf="pagina-1 ===paginador.number" class="page-link">{{pagina}}</span>
             <a *ngIf="pagina-1 !==paginador.number" (click)="paginar(pagina-1)" class="page-link">{{pagina}}</a>
         </li>
-
         <li [ngClass]="paginador.last?'disabled page-item':'page-item'">
             <a (click)="paginar(paginador.totalPages-1)" class="page-link">Última</a>
         </li>
-
-
         <li class="page-item" *ngIf="paginador.number<paginador.totalPages-1">
             <a (click)="paginar(paginador.number+1)" class="page-link">&raquo;</a>
         </li>
