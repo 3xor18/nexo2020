@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="productoImpuestos">
+            <h2><span jhiTranslate="nexoApp.productoImpuestos.detail.title">Producto Impuestos</span> {{productoImpuestos.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="nexoApp.productoImpuestos.estado">Estado</span></dt>
+                <dd>
+                    <span>{{productoImpuestos.estado}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.productoImpuestos.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{productoImpuestos.nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.productoImpuestos.fechaBd">Fecha Bd</span></dt>
+                <dd>
+                    <span>{{productoImpuestos.fechaBd}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.productoImpuestos.impuestoMontoFijo">Impuesto Monto Fijo</span></dt>
+                <dd>
+                    <span>{{productoImpuestos.impuestoMontoFijo}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.productoImpuestos.montoOTasa">Monto O Tasa</span></dt>
+                <dd>
+                    <span>{{productoImpuestos.montoOTasa}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.productoImpuestos.impuestoNacional">Impuesto Nacional</span></dt>
+                <dd>
+                    <span>{{productoImpuestos.impuestoNacional}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.productoImpuestos.fechaAplicable">Fecha Aplicable</span></dt>
+                <dd>
+                    <span>{{productoImpuestos.fechaAplicable}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.productoImpuestos.producto">Producto</span></dt>
+                <dd>
+                    <div *ngIf="productoImpuestos.productoId">
+                        <a [routerLink]="['/producto', productoImpuestos.productoId, 'view']">{{productoImpuestos.productoId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/producto-impuestos', productoImpuestos.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

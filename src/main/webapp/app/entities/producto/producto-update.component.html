@@ -1,0 +1,120 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-producto-heading" jhiTranslate="nexoApp.producto.home.createOrEditLabel">Create or edit a Producto</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.codigo" for="field_codigo">Codigo</label>
+                    <input type="text" class="form-control" name="codigo" id="field_codigo"
+                           formControlName="codigo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.codigoBarra" for="field_codigoBarra">Codigo Barra</label>
+                    <input type="text" class="form-control" name="codigoBarra" id="field_codigoBarra"
+                           formControlName="codigoBarra"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.descripcion" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                           formControlName="descripcion"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.cantidadDisponible" for="field_cantidadDisponible">Cantidad Disponible</label>
+                    <input type="number" class="form-control" name="cantidadDisponible" id="field_cantidadDisponible"
+                           formControlName="cantidadDisponible"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.alertaMinimo" for="field_alertaMinimo">Alerta Minimo</label>
+                    <input type="number" class="form-control" name="alertaMinimo" id="field_alertaMinimo"
+                           formControlName="alertaMinimo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.fechaVencimiento" for="field_fechaVencimiento">Fecha Vencimiento</label>
+                    <div class="input-group">
+                        <input id="field_fechaVencimiento" type="text" class="form-control" name="fechaVencimiento" ngbDatepicker  #fechaVencimientoDp="ngbDatepicker" formControlName="fechaVencimiento"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaVencimientoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.fechaBd" for="field_fechaBd">Fecha Bd</label>
+                    <div class="d-flex">
+                        <input id="field_fechaBd" type="datetime-local" class="form-control" name="fechaBd" formControlName="fechaBd" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.estado" for="field_estado">Estado</label>
+                    <input type="text" class="form-control" name="estado" id="field_estado"
+                           formControlName="estado"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.precioCompraBruto" for="field_precioCompraBruto">Precio Compra Bruto</label>
+                    <input type="number" class="form-control" name="precioCompraBruto" id="field_precioCompraBruto"
+                           formControlName="precioCompraBruto"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.precioVentaTotalDetal" for="field_precioVentaTotalDetal">Precio Venta Total Detal</label>
+                    <input type="number" class="form-control" name="precioVentaTotalDetal" id="field_precioVentaTotalDetal"
+                           formControlName="precioVentaTotalDetal"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.precioVentaTotalMayor" for="field_precioVentaTotalMayor">Precio Venta Total Mayor</label>
+                    <input type="number" class="form-control" name="precioVentaTotalMayor" id="field_precioVentaTotalMayor"
+                           formControlName="precioVentaTotalMayor"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.unidadMedidaVendida" for="field_unidadMedidaVendida">Unidad Medida Vendida</label>
+                    <input type="number" class="form-control" name="unidadMedidaVendida" id="field_unidadMedidaVendida"
+                           formControlName="unidadMedidaVendida"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.precioAlmayorDespuesde" for="field_precioAlmayorDespuesde">Precio Almayor Despuesde</label>
+                    <input type="number" class="form-control" name="precioAlmayorDespuesde" id="field_precioAlmayorDespuesde"
+                           formControlName="precioAlmayorDespuesde"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.vendedor" for="field_vendedor">Vendedor</label>
+                    <select class="form-control" id="field_vendedor" name="vendedor" formControlName="vendedorId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personaOption.id" *ngFor="let personaOption of personas; trackBy: trackPersonaById">{{personaOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.elaboradoEn" for="field_elaboradoEn">Elaborado En</label>
+                    <select class="form-control" id="field_elaboradoEn" name="elaboradoEn" formControlName="elaboradoEnId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="paisOption.id" *ngFor="let paisOption of pais; trackBy: trackPaisById">{{paisOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.producto.productoImpuestos" for="field_productoImpuestos">Producto Impuestos</label>
+                    <select class="form-control" id="field_productoImpuestos" name="productoImpuestos" formControlName="productoImpuestosId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productoImpuestosOption.id" *ngFor="let productoImpuestosOption of productoimpuestos; trackBy: trackProductoImpuestosById">{{productoImpuestosOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

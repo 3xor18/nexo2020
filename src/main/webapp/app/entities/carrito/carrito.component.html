@@ -1,0 +1,108 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="nexoApp.carrito.home.title">Carritos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-carrito" [routerLink]="['/carrito/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="nexoApp.carrito.home.createLabel">
+            Create a new Carrito
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="carritos?.length === 0">
+        <span jhiTranslate="nexoApp.carrito.home.notFound">No carritos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="carritos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fechaPedido"><span jhiTranslate="nexoApp.carrito.fechaPedido">Fecha Pedido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fechaPago"><span jhiTranslate="nexoApp.carrito.fechaPago">Fecha Pago</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fechaConfirmadoPago"><span jhiTranslate="nexoApp.carrito.fechaConfirmadoPago">Fecha Confirmado Pago</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fechaEntrega"><span jhiTranslate="nexoApp.carrito.fechaEntrega">Fecha Entrega</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="estado"><span jhiTranslate="nexoApp.carrito.estado">Estado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="telefonoContacto"><span jhiTranslate="nexoApp.carrito.telefonoContacto">Telefono Contacto</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="whatsapp"><span jhiTranslate="nexoApp.carrito.whatsapp">Whatsapp</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="puntajeComprador"><span jhiTranslate="nexoApp.carrito.puntajeComprador">Puntaje Comprador</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="puntajeVendedor"><span jhiTranslate="nexoApp.carrito.puntajeVendedor">Puntaje Vendedor</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fechaTermino"><span jhiTranslate="nexoApp.carrito.fechaTermino">Fecha Termino</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="razonTermino"><span jhiTranslate="nexoApp.carrito.razonTermino">Razon Termino</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="montoTotalCompra"><span jhiTranslate="nexoApp.carrito.montoTotalCompra">Monto Total Compra</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="montoDelivery"><span jhiTranslate="nexoApp.carrito.montoDelivery">Monto Delivery</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="direccionDeliveryId"><span jhiTranslate="nexoApp.carrito.direccionDelivery">Direccion Delivery</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="vendedorId"><span jhiTranslate="nexoApp.carrito.vendedor">Vendedor</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="clienteId"><span jhiTranslate="nexoApp.carrito.cliente">Cliente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let carrito of carritos ;trackBy: trackId">
+                <td><a [routerLink]="['/carrito', carrito.id, 'view' ]">{{carrito.id}}</a></td>
+                <td>{{carrito.fechaPedido | date:'medium'}}</td>
+                <td>{{carrito.fechaPago | date:'medium'}}</td>
+                <td>{{carrito.fechaConfirmadoPago | date:'medium'}}</td>
+                <td>{{carrito.fechaEntrega | date:'medium'}}</td>
+                <td>{{carrito.estado}}</td>
+                <td>{{carrito.telefonoContacto}}</td>
+                <td>{{carrito.whatsapp}}</td>
+                <td>{{carrito.puntajeComprador}}</td>
+                <td>{{carrito.puntajeVendedor}}</td>
+                <td>{{carrito.fechaTermino | date:'medium'}}</td>
+                <td>{{carrito.razonTermino}}</td>
+                <td>{{carrito.montoTotalCompra}}</td>
+                <td>{{carrito.montoDelivery}}</td>
+                <td>
+                    <div *ngIf="carrito.direccionDeliveryId">
+                        <a [routerLink]="['/direccion', carrito.direccionDeliveryId , 'view' ]" >{{carrito.direccionDeliveryId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="carrito.vendedorId">
+                        <a [routerLink]="['/persona', carrito.vendedorId , 'view' ]" >{{carrito.vendedorId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="carrito.clienteId">
+                        <a [routerLink]="['/persona', carrito.clienteId , 'view' ]" >{{carrito.clienteId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/carrito', carrito.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/carrito', carrito.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/carrito', { outlets: { popup: carrito.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="carritos?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

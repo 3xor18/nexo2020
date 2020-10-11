@@ -1,0 +1,102 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="nexoApp.producto.home.title">Productos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-producto" [routerLink]="['/producto/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="nexoApp.producto.home.createLabel">
+            Create a new Producto
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="productos?.length === 0">
+        <span jhiTranslate="nexoApp.producto.home.notFound">No productos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="productos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.nombre">Nombre</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.codigo">Codigo</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.codigoBarra">Codigo Barra</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.descripcion">Descripcion</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.cantidadDisponible">Cantidad Disponible</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.alertaMinimo">Alerta Minimo</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.fechaVencimiento">Fecha Vencimiento</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.fechaBd">Fecha Bd</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.estado">Estado</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.precioCompraBruto">Precio Compra Bruto</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.precioVentaTotalDetal">Precio Venta Total Detal</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.precioVentaTotalMayor">Precio Venta Total Mayor</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.unidadMedidaVendida">Unidad Medida Vendida</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.precioAlmayorDespuesde">Precio Almayor Despuesde</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.vendedor">Vendedor</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.elaboradoEn">Elaborado En</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.producto.productoImpuestos">Producto Impuestos</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let producto of productos ;trackBy: trackId">
+                <td><a [routerLink]="['/producto', producto.id, 'view' ]">{{producto.id}}</a></td>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.codigo}}</td>
+                <td>{{producto.codigoBarra}}</td>
+                <td>{{producto.descripcion}}</td>
+                <td>{{producto.cantidadDisponible}}</td>
+                <td>{{producto.alertaMinimo}}</td>
+                <td>{{producto.fechaVencimiento | date:'mediumDate'}}</td>
+                <td>{{producto.fechaBd | date:'medium'}}</td>
+                <td>{{producto.estado}}</td>
+                <td>{{producto.precioCompraBruto}}</td>
+                <td>{{producto.precioVentaTotalDetal}}</td>
+                <td>{{producto.precioVentaTotalMayor}}</td>
+                <td>{{producto.unidadMedidaVendida}}</td>
+                <td>{{producto.precioAlmayorDespuesde}}</td>
+                <td>
+                    <div *ngIf="producto.vendedorId">
+                        <a [routerLink]="['/persona', producto.vendedorId , 'view' ]" >{{producto.vendedorId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="producto.elaboradoEnId">
+                        <a [routerLink]="['/pais', producto.elaboradoEnId , 'view' ]" >{{producto.elaboradoEnId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="producto.productoImpuestosId">
+                        <a [routerLink]="['/producto-impuestos', producto.productoImpuestosId , 'view' ]" >{{producto.productoImpuestosId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/producto', producto.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/producto', producto.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/producto', { outlets: { popup: producto.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

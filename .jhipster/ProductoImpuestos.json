@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "producto",
+            "otherEntityName": "producto",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "estado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fechaBd",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "impuestoMontoFijo",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "montoOTasa",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "impuestoNacional",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "fechaAplicable",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20201011133643",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "producto_impuestos",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

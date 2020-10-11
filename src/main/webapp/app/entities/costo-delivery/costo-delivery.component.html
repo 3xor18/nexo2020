@@ -1,0 +1,78 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="nexoApp.costoDelivery.home.title">Costo Deliveries</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-costo-delivery" [routerLink]="['/costo-delivery/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="nexoApp.costoDelivery.home.createLabel">
+            Create a new Costo Delivery
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="costoDeliveries?.length === 0">
+        <span jhiTranslate="nexoApp.costoDelivery.home.notFound">No costoDeliveries found</span>
+    </div>
+    <div class="table-responsive" *ngIf="costoDeliveries?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.costoDelivery.estado">Estado</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.costoDelivery.montoIndividual">Monto Individual</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.costoDelivery.montoMayor">Monto Mayor</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.costoDelivery.cantidadMayor">Cantidad Mayor</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.costoDelivery.fechaBd">Fecha Bd</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.costoDelivery.producto">Producto</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.costoDelivery.comuna">Comuna</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let costoDelivery of costoDeliveries ;trackBy: trackId">
+                <td><a [routerLink]="['/costo-delivery', costoDelivery.id, 'view' ]">{{costoDelivery.id}}</a></td>
+                <td>{{costoDelivery.estado}}</td>
+                <td>{{costoDelivery.montoIndividual}}</td>
+                <td>{{costoDelivery.montoMayor}}</td>
+                <td>{{costoDelivery.cantidadMayor}}</td>
+                <td>{{costoDelivery.fechaBd | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="costoDelivery.productoId">
+                        <a [routerLink]="['/producto', costoDelivery.productoId , 'view' ]" >{{costoDelivery.productoId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="costoDelivery.comunaId">
+                        <a [routerLink]="['/comuna', costoDelivery.comunaId , 'view' ]" >{{costoDelivery.comunaId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/costo-delivery', costoDelivery.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/costo-delivery', costoDelivery.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/costo-delivery', { outlets: { popup: costoDelivery.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

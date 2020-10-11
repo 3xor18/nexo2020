@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-costo-delivery-heading" jhiTranslate="nexoApp.costoDelivery.home.createOrEditLabel">Create or edit a Costo Delivery</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.costoDelivery.estado" for="field_estado">Estado</label>
+                    <input type="text" class="form-control" name="estado" id="field_estado"
+                           formControlName="estado"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.costoDelivery.montoIndividual" for="field_montoIndividual">Monto Individual</label>
+                    <input type="number" class="form-control" name="montoIndividual" id="field_montoIndividual"
+                           formControlName="montoIndividual"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.costoDelivery.montoMayor" for="field_montoMayor">Monto Mayor</label>
+                    <input type="number" class="form-control" name="montoMayor" id="field_montoMayor"
+                           formControlName="montoMayor"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.costoDelivery.cantidadMayor" for="field_cantidadMayor">Cantidad Mayor</label>
+                    <input type="number" class="form-control" name="cantidadMayor" id="field_cantidadMayor"
+                           formControlName="cantidadMayor"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.costoDelivery.fechaBd" for="field_fechaBd">Fecha Bd</label>
+                    <div class="d-flex">
+                        <input id="field_fechaBd" type="datetime-local" class="form-control" name="fechaBd" formControlName="fechaBd" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.costoDelivery.producto" for="field_producto">Producto</label>
+                    <select class="form-control" id="field_producto" name="producto" formControlName="productoId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productoOption.id" *ngFor="let productoOption of productos; trackBy: trackProductoById">{{productoOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.costoDelivery.comuna" for="field_comuna">Comuna</label>
+                    <select class="form-control" id="field_comuna" name="comuna" formControlName="comunaId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="comunaOption.id" *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

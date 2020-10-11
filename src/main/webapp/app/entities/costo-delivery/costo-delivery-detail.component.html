@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="costoDelivery">
+            <h2><span jhiTranslate="nexoApp.costoDelivery.detail.title">Costo Delivery</span> {{costoDelivery.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="nexoApp.costoDelivery.estado">Estado</span></dt>
+                <dd>
+                    <span>{{costoDelivery.estado}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.costoDelivery.montoIndividual">Monto Individual</span></dt>
+                <dd>
+                    <span>{{costoDelivery.montoIndividual}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.costoDelivery.montoMayor">Monto Mayor</span></dt>
+                <dd>
+                    <span>{{costoDelivery.montoMayor}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.costoDelivery.cantidadMayor">Cantidad Mayor</span></dt>
+                <dd>
+                    <span>{{costoDelivery.cantidadMayor}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.costoDelivery.fechaBd">Fecha Bd</span></dt>
+                <dd>
+                    <span>{{costoDelivery.fechaBd}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.costoDelivery.producto">Producto</span></dt>
+                <dd>
+                    <div *ngIf="costoDelivery.productoId">
+                        <a [routerLink]="['/producto', costoDelivery.productoId, 'view']">{{costoDelivery.productoId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.costoDelivery.comuna">Comuna</span></dt>
+                <dd>
+                    <div *ngIf="costoDelivery.comunaId">
+                        <a [routerLink]="['/comuna', costoDelivery.comunaId, 'view']">{{costoDelivery.comunaId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/costo-delivery', costoDelivery.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

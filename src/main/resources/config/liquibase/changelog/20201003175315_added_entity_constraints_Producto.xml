@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Producto.
+    -->
+    <changeSet id="20201003175315-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="vendedor_id"
+                                 baseTableName="producto"
+                                 constraintName="fk_producto_vendedor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="persona"/>
+
+        <addForeignKeyConstraint baseColumnNames="elaborado_en_id"
+                                 baseTableName="producto"
+                                 constraintName="fk_producto_elaborado_en_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pais"/>
+
+        <addForeignKeyConstraint baseColumnNames="producto_impuestos_id"
+                                 baseTableName="producto"
+                                 constraintName="fk_producto_producto_impuestos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="producto_impuestos"/>
+
+    </changeSet>
+</databaseChangeLog>

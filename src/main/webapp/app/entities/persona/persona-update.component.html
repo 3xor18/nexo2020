@@ -1,0 +1,112 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-persona-heading" jhiTranslate="nexoApp.persona.home.createOrEditLabel">Create or edit a Persona</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.apellidoPaterno" for="field_apellidoPaterno">Apellido Paterno</label>
+                    <input type="text" class="form-control" name="apellidoPaterno" id="field_apellidoPaterno"
+                           formControlName="apellidoPaterno"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.apellidoMaterno" for="field_apellidoMaterno">Apellido Materno</label>
+                    <input type="text" class="form-control" name="apellidoMaterno" id="field_apellidoMaterno"
+                           formControlName="apellidoMaterno"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.docIdentidad" for="field_docIdentidad">Doc Identidad</label>
+                    <input type="text" class="form-control" name="docIdentidad" id="field_docIdentidad"
+                           formControlName="docIdentidad"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.fechaNac" for="field_fechaNac">Fecha Nac</label>
+                    <div class="input-group">
+                        <input id="field_fechaNac" type="text" class="form-control" name="fechaNac" ngbDatepicker  #fechaNacDp="ngbDatepicker" formControlName="fechaNac"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaNacDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.sexo" for="field_sexo">Sexo</label>
+                    <input type="text" class="form-control" name="sexo" id="field_sexo"
+                           formControlName="sexo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.nacionalidad" for="field_nacionalidad">Nacionalidad</label>
+                    <input type="text" class="form-control" name="nacionalidad" id="field_nacionalidad"
+                           formControlName="nacionalidad"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.telefono" for="field_telefono">Telefono</label>
+                    <input type="text" class="form-control" name="telefono" id="field_telefono"
+                           formControlName="telefono"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.estado" for="field_estado">Estado</label>
+                    <input type="text" class="form-control" name="estado" id="field_estado"
+                           formControlName="estado"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.natural" for="field_natural">Natural</label>
+                    <input type="checkbox" class="form-control" name="natural" id="field_natural"
+                           formControlName="natural"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.nombreComercial" for="field_nombreComercial">Nombre Comercial</label>
+                    <input type="text" class="form-control" name="nombreComercial" id="field_nombreComercial"
+                           formControlName="nombreComercial"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.scoreComprador" for="field_scoreComprador">Score Comprador</label>
+                    <input type="number" class="form-control" name="scoreComprador" id="field_scoreComprador"
+                           formControlName="scoreComprador"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.scoreVendedor" for="field_scoreVendedor">Score Vendedor</label>
+                    <input type="number" class="form-control" name="scoreVendedor" id="field_scoreVendedor"
+                           formControlName="scoreVendedor"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.pais" for="field_pais">Pais</label>
+                    <select class="form-control" id="field_pais" name="pais" formControlName="paisId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="paisOption.id" *ngFor="let paisOption of pais; trackBy: trackPaisById">{{paisOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.persona.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

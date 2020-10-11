@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="unidadMedida">
+            <h2><span jhiTranslate="nexoApp.unidadMedida.detail.title">Unidad Medida</span> {{unidadMedida.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="nexoApp.unidadMedida.estado">Estado</span></dt>
+                <dd>
+                    <span>{{unidadMedida.estado}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.unidadMedida.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{unidadMedida.nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.unidadMedida.fechaBd">Fecha Bd</span></dt>
+                <dd>
+                    <span>{{unidadMedida.fechaBd}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/unidad-medida', unidadMedida.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

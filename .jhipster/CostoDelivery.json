@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "producto",
+            "otherEntityName": "producto",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "costoDelivery"
+        },
+        {
+            "relationshipName": "comuna",
+            "otherEntityName": "comuna",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "costoDelivery"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "estado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "montoIndividual",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "montoMayor",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "cantidadMayor",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "fechaBd",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20201003180135",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "costo_delivery",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

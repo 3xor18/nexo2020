@@ -1,0 +1,86 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "direccionDelivery",
+            "otherEntityName": "direccion",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "vendedor",
+            "otherEntityName": "persona",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "cliente",
+            "otherEntityName": "persona",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "fechaPedido",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "fechaPago",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "fechaConfirmadoPago",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "fechaEntrega",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefonoContacto",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "whatsapp",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "puntajeComprador",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "puntajeVendedor",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "fechaTermino",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "razonTermino",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "montoTotalCompra",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "montoDelivery",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20201003181853",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "carrito",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

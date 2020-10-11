@@ -1,0 +1,26 @@
+{
+  "nexoApp": {
+    "direccion": {
+      "home": {
+        "title": "Direccions",
+        "createLabel": "Create a new Direccion",
+        "createOrEditLabel": "Create or edit a Direccion",
+        "notFound": "No Direccions found"
+      },
+      "created": "A new Direccion is created with identifier {{ param }}",
+      "updated": "A Direccion is updated with identifier {{ param }}",
+      "deleted": "A Direccion is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Direccion {{ id }}?"
+      },
+      "detail": {
+        "title": "Direccion"
+      },
+      "direccion": "Direccion",
+      "estado": "Estado",
+      "principal": "Principal",
+      "comuna": "Comuna",
+      "persona": "Persona"
+    }
+  }
+}

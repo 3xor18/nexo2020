@@ -1,0 +1,28 @@
+{
+  "nexoApp": {
+    "costoDelivery": {
+      "home": {
+        "title": "Costo Deliveries",
+        "createLabel": "Create a new Costo Delivery",
+        "createOrEditLabel": "Create or edit a Costo Delivery",
+        "notFound": "No Costo Deliveries found"
+      },
+      "created": "A new Costo Delivery is created with identifier {{ param }}",
+      "updated": "A Costo Delivery is updated with identifier {{ param }}",
+      "deleted": "A Costo Delivery is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Costo Delivery {{ id }}?"
+      },
+      "detail": {
+        "title": "Costo Delivery"
+      },
+      "estado": "Estado",
+      "montoIndividual": "Monto Individual",
+      "montoMayor": "Monto Mayor",
+      "cantidadMayor": "Cantidad Mayor",
+      "fechaBd": "Fecha Bd",
+      "producto": "Producto",
+      "comuna": "Comuna"
+    }
+  }
+}

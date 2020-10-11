@@ -14,6 +14,29 @@
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003174319_added_entity_Persona.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003174633_added_entity_Direccion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003174830_added_entity_Categoria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003175315_added_entity_Producto.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003175555_added_entity_ProductoCategoria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003180135_added_entity_CostoDelivery.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003180238_added_entity_Pais.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003180345_added_entity_Region.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003180503_added_entity_Comuna.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003181853_added_entity_Carrito.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003182120_added_entity_CarritoProducto.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201011132855_added_entity_UnidadMedida.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201011133643_added_entity_ProductoImpuestos.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20201003174319_added_entity_constraints_Persona.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003174633_added_entity_constraints_Direccion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003175315_added_entity_constraints_Producto.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003175555_added_entity_constraints_ProductoCategoria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003180135_added_entity_constraints_CostoDelivery.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003180345_added_entity_constraints_Region.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003180503_added_entity_constraints_Comuna.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003181853_added_entity_constraints_Carrito.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201003182120_added_entity_constraints_CarritoProducto.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201011133643_added_entity_constraints_ProductoImpuestos.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

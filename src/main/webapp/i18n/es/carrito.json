@@ -1,0 +1,37 @@
+{
+  "nexoApp": {
+    "carrito": {
+      "home": {
+        "title": "Carritos",
+        "createLabel": "Crear nuevo Carrito",
+        "createOrEditLabel": "Crear o editar Carrito",
+        "notFound": "No Carritos found"
+      },
+      "created": "Un nuevo Carrito ha sido creado con el identificador {{ param }}",
+      "updated": "Un Carrito ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Carrito ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Carrito {{ id }}?"
+      },
+      "detail": {
+        "title": "Carrito"
+      },
+      "fechaPedido": "Fecha Pedido",
+      "fechaPago": "Fecha Pago",
+      "fechaConfirmadoPago": "Fecha Confirmado Pago",
+      "fechaEntrega": "Fecha Entrega",
+      "estado": "Estado",
+      "telefonoContacto": "Telefono Contacto",
+      "whatsapp": "Whatsapp",
+      "puntajeComprador": "Puntaje Comprador",
+      "puntajeVendedor": "Puntaje Vendedor",
+      "fechaTermino": "Fecha Termino",
+      "razonTermino": "Razon Termino",
+      "montoTotalCompra": "Monto Total Compra",
+      "montoDelivery": "Monto Delivery",
+      "direccionDelivery": "Direccion Delivery",
+      "vendedor": "Vendedor",
+      "cliente": "Cliente"
+    }
+  }
+}

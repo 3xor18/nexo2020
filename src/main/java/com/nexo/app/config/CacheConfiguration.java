@@ -45,6 +45,19 @@ public class CacheConfiguration {
             createCache(cm, com.nexo.app.domain.User.class.getName());
             createCache(cm, com.nexo.app.domain.Authority.class.getName());
             createCache(cm, com.nexo.app.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.nexo.app.domain.Persona.class.getName());
+            createCache(cm, com.nexo.app.domain.Direccion.class.getName());
+            createCache(cm, com.nexo.app.domain.Categoria.class.getName());
+            createCache(cm, com.nexo.app.domain.Producto.class.getName());
+            createCache(cm, com.nexo.app.domain.ProductoCategoria.class.getName());
+            createCache(cm, com.nexo.app.domain.CostoDelivery.class.getName());
+            createCache(cm, com.nexo.app.domain.Pais.class.getName());
+            createCache(cm, com.nexo.app.domain.Region.class.getName());
+            createCache(cm, com.nexo.app.domain.Comuna.class.getName());
+            createCache(cm, com.nexo.app.domain.Carrito.class.getName());
+            createCache(cm, com.nexo.app.domain.CarritoProducto.class.getName());
+            createCache(cm, com.nexo.app.domain.UnidadMedida.class.getName());
+            createCache(cm, com.nexo.app.domain.ProductoImpuestos.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

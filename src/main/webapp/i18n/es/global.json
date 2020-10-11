@@ -7,6 +7,19 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entidades",
+        "persona": "Persona",
+        "direccion": "Direccion",
+        "categoria": "Categoria",
+        "producto": "Producto",
+        "productoCategoria": "Producto Categoria",
+        "costoDelivery": "Costo Delivery",
+        "pais": "Pais",
+        "region": "Region",
+        "comuna": "Comuna",
+        "carrito": "Carrito",
+        "carritoProducto": "Carrito Producto",
+        "unidadMedida": "Unidad Medida",
+        "productoImpuestos": "Producto Impuestos",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -16,7 +29,9 @@
         "sessions": "Sesiones",
         "login": "Iniciar sesión",
         "logout": "Cerrar la sesión",
-        "register": "Crear una cuenta"
+        "register": "Crear una cuenta",
+        "micarro": "Mi Carro",
+        "mitienda": "Mi Tienda"
       },
       "admin": {
         "main": "Administración",

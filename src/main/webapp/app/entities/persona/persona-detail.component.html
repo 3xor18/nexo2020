@@ -1,0 +1,89 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="persona">
+            <h2><span jhiTranslate="nexoApp.persona.detail.title">Persona</span> {{persona.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="nexoApp.persona.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{persona.nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.apellidoPaterno">Apellido Paterno</span></dt>
+                <dd>
+                    <span>{{persona.apellidoPaterno}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.apellidoMaterno">Apellido Materno</span></dt>
+                <dd>
+                    <span>{{persona.apellidoMaterno}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.docIdentidad">Doc Identidad</span></dt>
+                <dd>
+                    <span>{{persona.docIdentidad}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.fechaNac">Fecha Nac</span></dt>
+                <dd>
+                    <span>{{persona.fechaNac}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.sexo">Sexo</span></dt>
+                <dd>
+                    <span>{{persona.sexo}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.nacionalidad">Nacionalidad</span></dt>
+                <dd>
+                    <span>{{persona.nacionalidad}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.email">Email</span></dt>
+                <dd>
+                    <span>{{persona.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.telefono">Telefono</span></dt>
+                <dd>
+                    <span>{{persona.telefono}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.estado">Estado</span></dt>
+                <dd>
+                    <span>{{persona.estado}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.natural">Natural</span></dt>
+                <dd>
+                    <span>{{persona.natural}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.nombreComercial">Nombre Comercial</span></dt>
+                <dd>
+                    <span>{{persona.nombreComercial}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.scoreComprador">Score Comprador</span></dt>
+                <dd>
+                    <span>{{persona.scoreComprador}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.scoreVendedor">Score Vendedor</span></dt>
+                <dd>
+                    <span>{{persona.scoreVendedor}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.pais">Pais</span></dt>
+                <dd>
+                    <div *ngIf="persona.paisId">
+                        <a [routerLink]="['/pais', persona.paisId, 'view']">{{persona.paisId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.persona.user">User</span></dt>
+                <dd>
+                    {{persona.userLogin}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/persona', persona.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

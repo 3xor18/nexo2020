@@ -1,0 +1,23 @@
+{
+  "nexoApp": {
+    "region": {
+      "home": {
+        "title": "Regions",
+        "createLabel": "Crear nuevo Region",
+        "createOrEditLabel": "Crear o editar Region",
+        "notFound": "No Regions found"
+      },
+      "created": "Un nuevo Region ha sido creado con el identificador {{ param }}",
+      "updated": "Un Region ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Region ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Region {{ id }}?"
+      },
+      "detail": {
+        "title": "Region"
+      },
+      "nombre": "Nombre",
+      "pais": "Pais"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="nexoApp.productoImpuestos.home.title">Producto Impuestos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-producto-impuestos" [routerLink]="['/producto-impuestos/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="nexoApp.productoImpuestos.home.createLabel">
+            Create a new Producto Impuestos
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="productoImpuestos?.length === 0">
+        <span jhiTranslate="nexoApp.productoImpuestos.home.notFound">No productoImpuestos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="productoImpuestos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImpuestos.estado">Estado</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImpuestos.nombre">Nombre</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImpuestos.fechaBd">Fecha Bd</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImpuestos.impuestoMontoFijo">Impuesto Monto Fijo</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImpuestos.montoOTasa">Monto O Tasa</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImpuestos.impuestoNacional">Impuesto Nacional</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImpuestos.fechaAplicable">Fecha Aplicable</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.productoImpuestos.producto">Producto</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let productoImpuestos of productoImpuestos ;trackBy: trackId">
+                <td><a [routerLink]="['/producto-impuestos', productoImpuestos.id, 'view' ]">{{productoImpuestos.id}}</a></td>
+                <td>{{productoImpuestos.estado}}</td>
+                <td>{{productoImpuestos.nombre}}</td>
+                <td>{{productoImpuestos.fechaBd | date:'medium'}}</td>
+                <td>{{productoImpuestos.impuestoMontoFijo}}</td>
+                <td>{{productoImpuestos.montoOTasa}}</td>
+                <td>{{productoImpuestos.impuestoNacional}}</td>
+                <td>{{productoImpuestos.fechaAplicable | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="productoImpuestos.productoId">
+                        <a [routerLink]="['/producto', productoImpuestos.productoId , 'view' ]" >{{productoImpuestos.productoId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/producto-impuestos', productoImpuestos.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/producto-impuestos', productoImpuestos.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/producto-impuestos', { outlets: { popup: productoImpuestos.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

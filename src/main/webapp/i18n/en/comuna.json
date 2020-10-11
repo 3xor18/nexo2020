@@ -1,0 +1,23 @@
+{
+  "nexoApp": {
+    "comuna": {
+      "home": {
+        "title": "Comunas",
+        "createLabel": "Create a new Comuna",
+        "createOrEditLabel": "Create or edit a Comuna",
+        "notFound": "No Comunas found"
+      },
+      "created": "A new Comuna is created with identifier {{ param }}",
+      "updated": "A Comuna is updated with identifier {{ param }}",
+      "deleted": "A Comuna is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Comuna {{ id }}?"
+      },
+      "detail": {
+        "title": "Comuna"
+      },
+      "nombre": "Nombre",
+      "region": "Region"
+    }
+  }
+}

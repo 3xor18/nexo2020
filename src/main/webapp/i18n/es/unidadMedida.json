@@ -1,0 +1,24 @@
+{
+  "nexoApp": {
+    "unidadMedida": {
+      "home": {
+        "title": "Unidad Medidas",
+        "createLabel": "Crear nuevo Unidad Medida",
+        "createOrEditLabel": "Crear o editar Unidad Medida",
+        "notFound": "No Unidad Medidas found"
+      },
+      "created": "Un nuevo Unidad Medida ha sido creado con el identificador {{ param }}",
+      "updated": "Un Unidad Medida ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Unidad Medida ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Unidad Medida {{ id }}?"
+      },
+      "detail": {
+        "title": "Unidad Medida"
+      },
+      "estado": "Estado",
+      "nombre": "Nombre",
+      "fechaBd": "Fecha Bd"
+    }
+  }
+}

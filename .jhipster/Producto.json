@@ -1,0 +1,93 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "vendedor",
+            "otherEntityName": "persona",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "producto"
+        },
+        {
+            "relationshipName": "elaboradoEn",
+            "otherEntityName": "pais",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "producto"
+        },
+        {
+            "relationshipName": "productoImpuestos",
+            "otherEntityName": "productoImpuestos",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "producto"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codigo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codigoBarra",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cantidadDisponible",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "alertaMinimo",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "fechaVencimiento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fechaBd",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "precioCompraBruto",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "precioVentaTotalDetal",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "precioVentaTotalMayor",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "unidadMedidaVendida",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "precioAlmayorDespuesde",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20201003175315",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "producto",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

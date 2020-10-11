@@ -1,0 +1,38 @@
+{
+  "nexoApp": {
+    "producto": {
+      "home": {
+        "title": "Productos",
+        "createLabel": "Create a new Producto",
+        "createOrEditLabel": "Create or edit a Producto",
+        "notFound": "No Productos found"
+      },
+      "created": "A new Producto is created with identifier {{ param }}",
+      "updated": "A Producto is updated with identifier {{ param }}",
+      "deleted": "A Producto is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Producto {{ id }}?"
+      },
+      "detail": {
+        "title": "Producto"
+      },
+      "nombre": "Nombre",
+      "codigo": "Codigo",
+      "codigoBarra": "Codigo Barra",
+      "descripcion": "Descripcion",
+      "cantidadDisponible": "Cantidad Disponible",
+      "alertaMinimo": "Alerta Minimo",
+      "fechaVencimiento": "Fecha Vencimiento",
+      "fechaBd": "Fecha Bd",
+      "estado": "Estado",
+      "precioCompraBruto": "Precio Compra Bruto",
+      "precioVentaTotalDetal": "Precio Venta Total Detal",
+      "precioVentaTotalMayor": "Precio Venta Total Mayor",
+      "unidadMedidaVendida": "Unidad Medida Vendida",
+      "precioAlmayorDespuesde": "Precio Almayor Despuesde",
+      "vendedor": "Vendedor",
+      "elaboradoEn": "Elaborado En",
+      "productoImpuestos": "Producto Impuestos"
+    }
+  }
+}

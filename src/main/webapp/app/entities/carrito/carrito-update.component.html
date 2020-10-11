@@ -1,0 +1,115 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-carrito-heading" jhiTranslate="nexoApp.carrito.home.createOrEditLabel">Create or edit a Carrito</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.fechaPedido" for="field_fechaPedido">Fecha Pedido</label>
+                    <div class="d-flex">
+                        <input id="field_fechaPedido" type="datetime-local" class="form-control" name="fechaPedido" formControlName="fechaPedido" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.fechaPago" for="field_fechaPago">Fecha Pago</label>
+                    <div class="d-flex">
+                        <input id="field_fechaPago" type="datetime-local" class="form-control" name="fechaPago" formControlName="fechaPago" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.fechaConfirmadoPago" for="field_fechaConfirmadoPago">Fecha Confirmado Pago</label>
+                    <div class="d-flex">
+                        <input id="field_fechaConfirmadoPago" type="datetime-local" class="form-control" name="fechaConfirmadoPago" formControlName="fechaConfirmadoPago" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.fechaEntrega" for="field_fechaEntrega">Fecha Entrega</label>
+                    <div class="d-flex">
+                        <input id="field_fechaEntrega" type="datetime-local" class="form-control" name="fechaEntrega" formControlName="fechaEntrega" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.estado" for="field_estado">Estado</label>
+                    <input type="text" class="form-control" name="estado" id="field_estado"
+                           formControlName="estado"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.telefonoContacto" for="field_telefonoContacto">Telefono Contacto</label>
+                    <input type="text" class="form-control" name="telefonoContacto" id="field_telefonoContacto"
+                           formControlName="telefonoContacto"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.whatsapp" for="field_whatsapp">Whatsapp</label>
+                    <input type="checkbox" class="form-control" name="whatsapp" id="field_whatsapp"
+                           formControlName="whatsapp"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.puntajeComprador" for="field_puntajeComprador">Puntaje Comprador</label>
+                    <input type="number" class="form-control" name="puntajeComprador" id="field_puntajeComprador"
+                           formControlName="puntajeComprador"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.puntajeVendedor" for="field_puntajeVendedor">Puntaje Vendedor</label>
+                    <input type="number" class="form-control" name="puntajeVendedor" id="field_puntajeVendedor"
+                           formControlName="puntajeVendedor"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.fechaTermino" for="field_fechaTermino">Fecha Termino</label>
+                    <div class="d-flex">
+                        <input id="field_fechaTermino" type="datetime-local" class="form-control" name="fechaTermino" formControlName="fechaTermino" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.razonTermino" for="field_razonTermino">Razon Termino</label>
+                    <input type="text" class="form-control" name="razonTermino" id="field_razonTermino"
+                           formControlName="razonTermino"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.montoTotalCompra" for="field_montoTotalCompra">Monto Total Compra</label>
+                    <input type="number" class="form-control" name="montoTotalCompra" id="field_montoTotalCompra"
+                           formControlName="montoTotalCompra"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.montoDelivery" for="field_montoDelivery">Monto Delivery</label>
+                    <input type="number" class="form-control" name="montoDelivery" id="field_montoDelivery"
+                           formControlName="montoDelivery"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.direccionDelivery" for="field_direccionDelivery">Direccion Delivery</label>
+                    <select class="form-control" id="field_direccionDelivery" name="direccionDelivery" formControlName="direccionDeliveryId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="direccionOption.id" *ngFor="let direccionOption of direccions; trackBy: trackDireccionById">{{direccionOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.vendedor" for="field_vendedor">Vendedor</label>
+                    <select class="form-control" id="field_vendedor" name="vendedor" formControlName="vendedorId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personaOption.id" *ngFor="let personaOption of personas; trackBy: trackPersonaById">{{personaOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nexoApp.carrito.cliente" for="field_cliente">Cliente</label>
+                    <select class="form-control" id="field_cliente" name="cliente" formControlName="clienteId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personaOption.id" *ngFor="let personaOption of personas; trackBy: trackPersonaById">{{personaOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

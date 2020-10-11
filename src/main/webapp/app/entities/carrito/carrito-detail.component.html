@@ -1,0 +1,93 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="carrito">
+            <h2><span jhiTranslate="nexoApp.carrito.detail.title">Carrito</span> {{carrito.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="nexoApp.carrito.fechaPedido">Fecha Pedido</span></dt>
+                <dd>
+                    <span>{{carrito.fechaPedido}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.fechaPago">Fecha Pago</span></dt>
+                <dd>
+                    <span>{{carrito.fechaPago}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.fechaConfirmadoPago">Fecha Confirmado Pago</span></dt>
+                <dd>
+                    <span>{{carrito.fechaConfirmadoPago}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.fechaEntrega">Fecha Entrega</span></dt>
+                <dd>
+                    <span>{{carrito.fechaEntrega}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.estado">Estado</span></dt>
+                <dd>
+                    <span>{{carrito.estado}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.telefonoContacto">Telefono Contacto</span></dt>
+                <dd>
+                    <span>{{carrito.telefonoContacto}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.whatsapp">Whatsapp</span></dt>
+                <dd>
+                    <span>{{carrito.whatsapp}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.puntajeComprador">Puntaje Comprador</span></dt>
+                <dd>
+                    <span>{{carrito.puntajeComprador}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.puntajeVendedor">Puntaje Vendedor</span></dt>
+                <dd>
+                    <span>{{carrito.puntajeVendedor}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.fechaTermino">Fecha Termino</span></dt>
+                <dd>
+                    <span>{{carrito.fechaTermino}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.razonTermino">Razon Termino</span></dt>
+                <dd>
+                    <span>{{carrito.razonTermino}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.montoTotalCompra">Monto Total Compra</span></dt>
+                <dd>
+                    <span>{{carrito.montoTotalCompra}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.montoDelivery">Monto Delivery</span></dt>
+                <dd>
+                    <span>{{carrito.montoDelivery}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.direccionDelivery">Direccion Delivery</span></dt>
+                <dd>
+                    <div *ngIf="carrito.direccionDeliveryId">
+                        <a [routerLink]="['/direccion', carrito.direccionDeliveryId, 'view']">{{carrito.direccionDeliveryId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.vendedor">Vendedor</span></dt>
+                <dd>
+                    <div *ngIf="carrito.vendedorId">
+                        <a [routerLink]="['/persona', carrito.vendedorId, 'view']">{{carrito.vendedorId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carrito.cliente">Cliente</span></dt>
+                <dd>
+                    <div *ngIf="carrito.clienteId">
+                        <a [routerLink]="['/persona', carrito.clienteId, 'view']">{{carrito.clienteId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/carrito', carrito.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Carrito.
+    -->
+    <changeSet id="20201003181853-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="direccion_delivery_id"
+                                 baseTableName="carrito"
+                                 constraintName="fk_carrito_direccion_delivery_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="direccion"/>
+
+        <addForeignKeyConstraint baseColumnNames="vendedor_id"
+                                 baseTableName="carrito"
+                                 constraintName="fk_carrito_vendedor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="persona"/>
+
+        <addForeignKeyConstraint baseColumnNames="cliente_id"
+                                 baseTableName="carrito"
+                                 constraintName="fk_carrito_cliente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="persona"/>
+
+    </changeSet>
+</databaseChangeLog>

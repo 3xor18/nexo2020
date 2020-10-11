@@ -1,0 +1,28 @@
+{
+  "nexoApp": {
+    "costoDelivery": {
+      "home": {
+        "title": "Costo Deliveries",
+        "createLabel": "Crear nuevo Costo Delivery",
+        "createOrEditLabel": "Crear o editar Costo Delivery",
+        "notFound": "No Costo Deliveries found"
+      },
+      "created": "Un nuevo Costo Delivery ha sido creado con el identificador {{ param }}",
+      "updated": "Un Costo Delivery ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Costo Delivery ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Costo Delivery {{ id }}?"
+      },
+      "detail": {
+        "title": "Costo Delivery"
+      },
+      "estado": "Estado",
+      "montoIndividual": "Monto Individual",
+      "montoMayor": "Monto Mayor",
+      "cantidadMayor": "Cantidad Mayor",
+      "fechaBd": "Fecha Bd",
+      "producto": "Producto",
+      "comuna": "Comuna"
+    }
+  }
+}

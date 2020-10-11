@@ -1,0 +1,29 @@
+{
+  "nexoApp": {
+    "productoImpuestos": {
+      "home": {
+        "title": "Producto Impuestos",
+        "createLabel": "Create a new Producto Impuestos",
+        "createOrEditLabel": "Create or edit a Producto Impuestos",
+        "notFound": "No Producto Impuestos found"
+      },
+      "created": "A new Producto Impuestos is created with identifier {{ param }}",
+      "updated": "A Producto Impuestos is updated with identifier {{ param }}",
+      "deleted": "A Producto Impuestos is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Producto Impuestos {{ id }}?"
+      },
+      "detail": {
+        "title": "Producto Impuestos"
+      },
+      "estado": "Estado",
+      "nombre": "Nombre",
+      "fechaBd": "Fecha Bd",
+      "impuestoMontoFijo": "Impuesto Monto Fijo",
+      "montoOTasa": "Monto O Tasa",
+      "impuestoNacional": "Impuesto Nacional",
+      "fechaAplicable": "Fecha Aplicable",
+      "producto": "Producto"
+    }
+  }
+}

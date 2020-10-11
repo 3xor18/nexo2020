@@ -1,0 +1,27 @@
+{
+  "nexoApp": {
+    "carritoProducto": {
+      "home": {
+        "title": "Carrito Productos",
+        "createLabel": "Create a new Carrito Producto",
+        "createOrEditLabel": "Create or edit a Carrito Producto",
+        "notFound": "No Carrito Productos found"
+      },
+      "created": "A new Carrito Producto is created with identifier {{ param }}",
+      "updated": "A Carrito Producto is updated with identifier {{ param }}",
+      "deleted": "A Carrito Producto is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Carrito Producto {{ id }}?"
+      },
+      "detail": {
+        "title": "Carrito Producto"
+      },
+      "cantidad": "Cantidad",
+      "precioCompra": "Precio Compra",
+      "estado": "Estado",
+      "costoDelivery": "Costo Delivery",
+      "producto": "Producto",
+      "carrito": "Carrito"
+    }
+  }
+}

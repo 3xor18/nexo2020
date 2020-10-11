@@ -1,0 +1,87 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "pais",
+            "otherEntityName": "pais",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "persona"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "persona"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apellidoPaterno",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apellidoMaterno",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "docIdentidad",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fechaNac",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "sexo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nacionalidad",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefono",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "natural",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "nombreComercial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "scoreComprador",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "scoreVendedor",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20201003174319",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "persona",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

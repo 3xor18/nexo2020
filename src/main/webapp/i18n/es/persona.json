@@ -1,0 +1,37 @@
+{
+  "nexoApp": {
+    "persona": {
+      "home": {
+        "title": "Personas",
+        "createLabel": "Crear nuevo Persona",
+        "createOrEditLabel": "Crear o editar Persona",
+        "notFound": "No Personas found"
+      },
+      "created": "Un nuevo Persona ha sido creado con el identificador {{ param }}",
+      "updated": "Un Persona ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Persona ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Persona {{ id }}?"
+      },
+      "detail": {
+        "title": "Persona"
+      },
+      "nombre": "Nombre",
+      "apellidoPaterno": "Apellido Paterno",
+      "apellidoMaterno": "Apellido Materno",
+      "docIdentidad": "Doc Identidad",
+      "fechaNac": "Fecha Nac",
+      "sexo": "Sexo",
+      "nacionalidad": "Nacionalidad",
+      "email": "Email",
+      "telefono": "Telefono",
+      "estado": "Estado",
+      "natural": "Natural",
+      "nombreComercial": "Nombre Comercial",
+      "scoreComprador": "Score Comprador",
+      "scoreVendedor": "Score Vendedor",
+      "pais": "Pais",
+      "user": "User"
+    }
+  }
+}

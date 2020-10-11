@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="carritoProducto">
+            <h2><span jhiTranslate="nexoApp.carritoProducto.detail.title">Carrito Producto</span> {{carritoProducto.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="nexoApp.carritoProducto.cantidad">Cantidad</span></dt>
+                <dd>
+                    <span>{{carritoProducto.cantidad}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carritoProducto.precioCompra">Precio Compra</span></dt>
+                <dd>
+                    <span>{{carritoProducto.precioCompra}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carritoProducto.estado">Estado</span></dt>
+                <dd>
+                    <span>{{carritoProducto.estado}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carritoProducto.costoDelivery">Costo Delivery</span></dt>
+                <dd>
+                    <span>{{carritoProducto.costoDelivery}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carritoProducto.producto">Producto</span></dt>
+                <dd>
+                    <div *ngIf="carritoProducto.productoId">
+                        <a [routerLink]="['/producto', carritoProducto.productoId, 'view']">{{carritoProducto.productoId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.carritoProducto.carrito">Carrito</span></dt>
+                <dd>
+                    <div *ngIf="carritoProducto.carritoId">
+                        <a [routerLink]="['/carrito', carritoProducto.carritoId, 'view']">{{carritoProducto.carritoId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/carrito-producto', carritoProducto.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

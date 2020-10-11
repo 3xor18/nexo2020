@@ -1,0 +1,94 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="nexoApp.persona.home.title">Personas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-persona" [routerLink]="['/persona/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="nexoApp.persona.home.createLabel">
+            Create a new Persona
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="personas?.length === 0">
+        <span jhiTranslate="nexoApp.persona.home.notFound">No personas found</span>
+    </div>
+    <div class="table-responsive" *ngIf="personas?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.nombre">Nombre</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.apellidoPaterno">Apellido Paterno</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.apellidoMaterno">Apellido Materno</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.docIdentidad">Doc Identidad</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.fechaNac">Fecha Nac</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.sexo">Sexo</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.nacionalidad">Nacionalidad</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.email">Email</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.telefono">Telefono</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.estado">Estado</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.natural">Natural</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.nombreComercial">Nombre Comercial</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.scoreComprador">Score Comprador</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.scoreVendedor">Score Vendedor</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.pais">Pais</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.persona.user">User</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let persona of personas ;trackBy: trackId">
+                <td><a [routerLink]="['/persona', persona.id, 'view' ]">{{persona.id}}</a></td>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellidoPaterno}}</td>
+                <td>{{persona.apellidoMaterno}}</td>
+                <td>{{persona.docIdentidad}}</td>
+                <td>{{persona.fechaNac | date:'mediumDate'}}</td>
+                <td>{{persona.sexo}}</td>
+                <td>{{persona.nacionalidad}}</td>
+                <td>{{persona.email}}</td>
+                <td>{{persona.telefono}}</td>
+                <td>{{persona.estado}}</td>
+                <td>{{persona.natural}}</td>
+                <td>{{persona.nombreComercial}}</td>
+                <td>{{persona.scoreComprador}}</td>
+                <td>{{persona.scoreVendedor}}</td>
+                <td>
+                    <div *ngIf="persona.paisId">
+                        <a [routerLink]="['/pais', persona.paisId , 'view' ]" >{{persona.paisId}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{persona.userLogin}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/persona', persona.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/persona', persona.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/persona', { outlets: { popup: persona.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

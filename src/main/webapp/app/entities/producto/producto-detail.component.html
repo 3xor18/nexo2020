@@ -1,0 +1,97 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="producto">
+            <h2><span jhiTranslate="nexoApp.producto.detail.title">Producto</span> {{producto.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="nexoApp.producto.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{producto.nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.codigo">Codigo</span></dt>
+                <dd>
+                    <span>{{producto.codigo}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.codigoBarra">Codigo Barra</span></dt>
+                <dd>
+                    <span>{{producto.codigoBarra}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{producto.descripcion}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.cantidadDisponible">Cantidad Disponible</span></dt>
+                <dd>
+                    <span>{{producto.cantidadDisponible}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.alertaMinimo">Alerta Minimo</span></dt>
+                <dd>
+                    <span>{{producto.alertaMinimo}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.fechaVencimiento">Fecha Vencimiento</span></dt>
+                <dd>
+                    <span>{{producto.fechaVencimiento}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.fechaBd">Fecha Bd</span></dt>
+                <dd>
+                    <span>{{producto.fechaBd}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.estado">Estado</span></dt>
+                <dd>
+                    <span>{{producto.estado}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.precioCompraBruto">Precio Compra Bruto</span></dt>
+                <dd>
+                    <span>{{producto.precioCompraBruto}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.precioVentaTotalDetal">Precio Venta Total Detal</span></dt>
+                <dd>
+                    <span>{{producto.precioVentaTotalDetal}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.precioVentaTotalMayor">Precio Venta Total Mayor</span></dt>
+                <dd>
+                    <span>{{producto.precioVentaTotalMayor}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.unidadMedidaVendida">Unidad Medida Vendida</span></dt>
+                <dd>
+                    <span>{{producto.unidadMedidaVendida}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.precioAlmayorDespuesde">Precio Almayor Despuesde</span></dt>
+                <dd>
+                    <span>{{producto.precioAlmayorDespuesde}}</span>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.vendedor">Vendedor</span></dt>
+                <dd>
+                    <div *ngIf="producto.vendedorId">
+                        <a [routerLink]="['/persona', producto.vendedorId, 'view']">{{producto.vendedorId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.elaboradoEn">Elaborado En</span></dt>
+                <dd>
+                    <div *ngIf="producto.elaboradoEnId">
+                        <a [routerLink]="['/pais', producto.elaboradoEnId, 'view']">{{producto.elaboradoEnId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="nexoApp.producto.productoImpuestos">Producto Impuestos</span></dt>
+                <dd>
+                    <div *ngIf="producto.productoImpuestosId">
+                        <a [routerLink]="['/producto-impuestos', producto.productoImpuestosId, 'view']">{{producto.productoImpuestosId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/producto', producto.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

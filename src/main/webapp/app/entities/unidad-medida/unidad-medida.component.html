@@ -1,0 +1,62 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="nexoApp.unidadMedida.home.title">Unidad Medidas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-unidad-medida" [routerLink]="['/unidad-medida/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="nexoApp.unidadMedida.home.createLabel">
+            Create a new Unidad Medida
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="unidadMedidas?.length === 0">
+        <span jhiTranslate="nexoApp.unidadMedida.home.notFound">No unidadMedidas found</span>
+    </div>
+    <div class="table-responsive" *ngIf="unidadMedidas?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.unidadMedida.estado">Estado</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.unidadMedida.nombre">Nombre</span></th>
+            <th scope="col" ><span jhiTranslate="nexoApp.unidadMedida.fechaBd">Fecha Bd</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let unidadMedida of unidadMedidas ;trackBy: trackId">
+                <td><a [routerLink]="['/unidad-medida', unidadMedida.id, 'view' ]">{{unidadMedida.id}}</a></td>
+                <td>{{unidadMedida.estado}}</td>
+                <td>{{unidadMedida.nombre}}</td>
+                <td>{{unidadMedida.fechaBd | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/unidad-medida', unidadMedida.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/unidad-medida', unidadMedida.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/unidad-medida', { outlets: { popup: unidadMedida.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
