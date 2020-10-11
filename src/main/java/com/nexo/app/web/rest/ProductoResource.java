@@ -124,4 +124,16 @@ public class ProductoResource {
         productoService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+    
+    /**
+     * @param pageable
+     * @return Pageable de los productos del usuario actual
+     */
+    @GetMapping("/productos/myproducts")
+    public ResponseEntity<List<ProductoDTO>> getMyProductos(Pageable pageable) {
+        log.debug("REST request to get a page of Productos");
+        Page<ProductoDTO> page = productoService.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
 }

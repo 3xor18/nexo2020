@@ -11,6 +11,10 @@ public final class Constants {
     public static final String SYSTEM_ACCOUNT = "system";
     public static final String DEFAULT_LANGUAGE = "es";
     public static final String ANONYMOUS_USER = "anonymoususer";
+    
+    // Codigos de excepcion
+    public static final String NO_ENCONTRADO="404";
+    public static final String ERROR_INTERNO="500";
 
     private Constants() {
     }

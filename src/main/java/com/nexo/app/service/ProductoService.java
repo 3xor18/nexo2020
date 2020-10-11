@@ -1,6 +1,7 @@
 package com.nexo.app.service;
 
 import com.nexo.app.service.dto.ProductoDTO;
+import com.nexo.app.web.rest.errors.NexoNotFoundException;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,4 +44,11 @@ public interface ProductoService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    /**
+     * @param pageable
+     * @return Pageable de los productos del usuario Actual
+     * @throws NexoNotFoundException si no tiene productos registrados
+     */
+   Page<ProductoDTO> getMyProducts(Pageable pageable) throws NexoNotFoundException;
 }
