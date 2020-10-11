@@ -144,6 +144,9 @@ public class ProductoResource {
 	 */
 	@GetMapping("/productos/myproducts")
 	public ResponseEntity<?> getMyProductos(Pageable pageable) {
+		for (int i = 0; i < 20; i++) {
+			log.debug("REST request to get a page of Productos");
+		}
 		log.debug("REST request to get a page of Productos");
 		Map<String, Object> response = new HashMap<>();
 		Page<ProductoDTO> page = null;

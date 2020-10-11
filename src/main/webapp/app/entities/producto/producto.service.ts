@@ -79,13 +79,10 @@ export class ProductoService {
   }
 
   /* Trae los productos del usuario Actual */
-  getMyProducts(pageable: number): Observable<EntityArrayResponseType> {
-    return this.http.get<IProducto[]>(`${this.resourceUrl}/myproducts/${pageable}`, { observe: 'response' }).pipe(
-      catchError(e => {
-        this.utilsService.popupError('No existe un documento con estos datos');
-        return throwError(e);
-      }),
-      map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res))
-    );
+  getMyProducts(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<IProducto[]>(`${this.resourceUrl}/myproducts`, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 }

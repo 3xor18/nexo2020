@@ -1,1 +1,158 @@
-<p>listado-productos works!</p>
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="nexoApp.producto.home.title">Productos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-producto"
+            [routerLink]="['/producto/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span jhiTranslate="nexoApp.producto.home.createLabel">
+                Create a new Producto
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br />
+    <div class="alert alert-warning" *ngIf="productos?.length === 0">
+        <span jhiTranslate="nexoApp.producto.home.notFound">No productos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="productos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                    <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="nombre"><span jhiTranslate="nexoApp.producto.nombre">Nombre</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="codigo"><span jhiTranslate="nexoApp.producto.codigo">Codigo</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="codigoBarra"><span jhiTranslate="nexoApp.producto.codigoBarra">Codigo
+                            Barra</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="descripcion"><span
+                            jhiTranslate="nexoApp.producto.descripcion">Descripcion</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="cantidadDisponible"><span
+                            jhiTranslate="nexoApp.producto.cantidadDisponible">Cantidad Disponible</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="alertaMinimo"><span jhiTranslate="nexoApp.producto.alertaMinimo">Alerta
+                            Minimo</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="fechaVencimiento"><span
+                            jhiTranslate="nexoApp.producto.fechaVencimiento">Fecha Vencimiento</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="fechaBd"><span jhiTranslate="nexoApp.producto.fechaBd">Fecha Bd</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="estado"><span jhiTranslate="nexoApp.producto.estado">Estado</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="precioCompraBruto"><span
+                            jhiTranslate="nexoApp.producto.precioCompraBruto">Precio Compra Bruto</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="precioVentaTotalDetal"><span
+                            jhiTranslate="nexoApp.producto.precioVentaTotalDetal">Precio Venta Total Detal</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="precioVentaTotalMayor"><span
+                            jhiTranslate="nexoApp.producto.precioVentaTotalMayor">Precio Venta Total Mayor</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="unidadMedidaVendida"><span
+                            jhiTranslate="nexoApp.producto.unidadMedidaVendida">Unidad Medida Vendida</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="precioAlmayorDespuesde"><span
+                            jhiTranslate="nexoApp.producto.precioAlmayorDespuesde">Precio Almayor Despuesde</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="vendedorId"><span
+                            jhiTranslate="nexoApp.producto.vendedor">Vendedor</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="elaboradoEnId"><span
+                            jhiTranslate="nexoApp.producto.elaboradoEn">Elaborado En</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="comunaVentaId"><span jhiTranslate="nexoApp.producto.comunaVenta">Comuna
+                            Venta</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of productos ;trackBy: trackId">
+                    <td><a [routerLink]="['/producto', producto.id, 'view' ]">{{producto.id}}</a></td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.codigo}}</td>
+                    <td>{{producto.codigoBarra}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>{{producto.cantidadDisponible}}</td>
+                    <td>{{producto.alertaMinimo}}</td>
+                    <td>{{producto.fechaVencimiento | date:'mediumDate'}}</td>
+                    <td>{{producto.fechaBd | date:'medium'}}</td>
+                    <td>{{producto.estado}}</td>
+                    <td>{{producto.precioCompraBruto}}</td>
+                    <td>{{producto.precioVentaTotalDetal}}</td>
+                    <td>{{producto.precioVentaTotalMayor}}</td>
+                    <td>{{producto.unidadMedidaVendida}}</td>
+                    <td>{{producto.precioAlmayorDespuesde}}</td>
+                    <td>
+                        <div *ngIf="producto.vendedorId">
+                            <a [routerLink]="['/persona', producto.vendedorId , 'view' ]">{{producto.vendedorId}}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="producto.elaboradoEnId">
+                            <a [routerLink]="['/pais', producto.elaboradoEnId , 'view' ]">{{producto.elaboradoEnId}}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="producto.comunaVentaId">
+                            <a
+                                [routerLink]="['/comuna', producto.comunaVentaId , 'view' ]">{{producto.comunaVentaId}}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit" [routerLink]="['/producto', producto.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                                <fa-icon [icon]="'eye'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+                            <button type="submit" [routerLink]="['/producto', producto.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+                            <button type="submit"
+                                [routerLink]="['/producto', { outlets: { popup: producto.id + '/delete'} }]"
+                                replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="productos?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

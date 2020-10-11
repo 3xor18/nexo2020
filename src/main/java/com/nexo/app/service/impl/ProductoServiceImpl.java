@@ -1,8 +1,11 @@
 package com.nexo.app.service.impl;
 
+import com.nexo.app.service.PersonaService;
 import com.nexo.app.service.ProductoService;
+import com.nexo.app.service.UserService;
 import com.nexo.app.config.Constants;
 import com.nexo.app.domain.Producto;
+import com.nexo.app.domain.User;
 import com.nexo.app.repository.ProductoRepository;
 import com.nexo.app.service.dto.ProductoDTO;
 import com.nexo.app.service.mapper.ProductoMapper;
@@ -30,10 +33,20 @@ public class ProductoServiceImpl implements ProductoService {
 	private final ProductoRepository productoRepository;
 
 	private final ProductoMapper productoMapper;
-
-	public ProductoServiceImpl(ProductoRepository productoRepository, ProductoMapper productoMapper) {
+	
+	private final UserService userService;
+	
+	private final PersonaService personaService;
+	
+	public ProductoServiceImpl(
+			ProductoRepository productoRepository, 
+			ProductoMapper productoMapper,
+			UserService userService,
+			PersonaService personaService) {
 		this.productoRepository = productoRepository;
 		this.productoMapper = productoMapper;
+		this.userService=userService;
+		this.personaService=personaService;
 	}
 
 	/**
@@ -90,7 +103,12 @@ public class ProductoServiceImpl implements ProductoService {
 	@Override
 	public Page<ProductoDTO> getMyProducts(Pageable pageable) throws NexoNotFoundException {
 	    log.debug("Request to get all my Productos");
-	    Page<Producto> productos=productoRepository.getAllMyProducts(pageable).orElseThrow(()->new NexoNotFoundException(Constants.NO_ENCONTRADO, "No tienes Productos en tu inventario"));
+	    User usuarioActual=userService.getUserWithAuthorities().orElseThrow(()->new NexoNotFoundException(Constants.NO_ENCONTRADO, "No puedes acceder al recurso"));
+		Persona vendedorActual=personaService.
+	    for (int i = 0; i < 20; i++) {
+			log.debug(">>>"+usuarioActual.getId());
+		}
+	    Page<Producto> productos=productoRepository.getAllMyProducts(usuarioActual.getId(),pageable).orElseThrow(()->new NexoNotFoundException(Constants.NO_ENCONTRADO, "No tienes Productos en tu inventario"));
         return productos .map(productoMapper::toDto);
 	}
 }

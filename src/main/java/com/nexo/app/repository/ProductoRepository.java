@@ -20,7 +20,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
 	 * @param pageable
 	 * @return pageable de los productos del usuario Actual
 	 */
-	@Query("SELECT p FROM Producto p where p.vendedor.user.login = ?#{principal.username}")
-	Optional<Page<Producto>> getAllMyProducts(Pageable pageable);
+	 @Query("select p from Producto p where p.vendedor.user=?1 ORDER BY p.id DESC")
+	Optional<Page<Producto>> getAllMyProducts(Long idUsuario,Pageable pageable);
 
 }
