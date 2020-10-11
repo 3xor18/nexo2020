@@ -1,9 +1,12 @@
 package com.nexo.app.service;
 
+import com.nexo.app.domain.Producto;
 import com.nexo.app.service.dto.ProductoDTO;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.data.domain.Page;
 
 /**
  * Service Interface for managing {@link com.nexo.app.domain.Producto}.
@@ -40,4 +43,11 @@ public interface ProductoService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    /**
+     * @param numero de paginado
+     * @return Pageable de los productos del que esta consultando
+     */
+    Page<ProductoDTO> getMyProductsPage(Integer page);
+    
 }

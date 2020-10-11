@@ -7,7 +7,9 @@ import com.nexo.app.service.dto.ProductoDTO;
 import com.nexo.app.service.mapper.ProductoMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +24,8 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class ProductoServiceImpl implements ProductoService {
+	
+	private final int PAGINADO_BY=20;
 
     private final Logger log = LoggerFactory.getLogger(ProductoServiceImpl.class);
 
@@ -87,4 +91,11 @@ public class ProductoServiceImpl implements ProductoService {
         log.debug("Request to delete Producto : {}", id);
         productoRepository.deleteById(id);
     }
+
+	@Override
+	public Page<ProductoDTO> getMyProductsPage(Integer page) {
+		Pageable pageable=new PageRequest(page, PAGINADO_BY);
+		Page<Producto> productos=productoRepository.findByCurrentUset()
+		return null;
+	}
 }
