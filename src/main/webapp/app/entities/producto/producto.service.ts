@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import * as moment from 'moment';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IProducto } from 'app/shared/model/producto.model';
+import { UtilsService } from '../../custom/utils/utils.service';
 
 type EntityResponseType = HttpResponse<IProducto>;
 type EntityArrayResponseType = HttpResponse<IProducto[]>;
@@ -17,7 +18,7 @@ type EntityArrayResponseType = HttpResponse<IProducto[]>;
 export class ProductoService {
   public resourceUrl = SERVER_API_URL + 'api/productos';
 
-  constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient, protected utilsService: UtilsService) {}
 
   create(producto: IProducto): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(producto);
@@ -75,5 +76,16 @@ export class ProductoService {
       });
     }
     return res;
+  }
+
+  /* Trae los productos del usuario Actual */
+  getMyProducts(pageable: number): Observable<EntityArrayResponseType> {
+    return this.http.get<IProducto[]>(`${this.resourceUrl}/myproducts/${pageable}`, { observe: 'response' }).pipe(
+      catchError(e => {
+        this.utilsService.popupError('No existe un documento con estos datos');
+        return throwError(e);
+      }),
+      map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res))
+    );
   }
 }
