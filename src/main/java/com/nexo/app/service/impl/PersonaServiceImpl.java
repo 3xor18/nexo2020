@@ -87,4 +87,10 @@ public class PersonaServiceImpl implements PersonaService {
         log.debug("Request to delete Persona : {}", id);
         personaRepository.deleteById(id);
     }
+
+	@Override
+	public Optional<Persona> getUserActual() {
+		  log.debug("Consulta de datos actuales");
+	       return  personaRepository.getUserActual();
+	}
 }

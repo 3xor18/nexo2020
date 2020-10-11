@@ -5,7 +5,7 @@
         "title": "Productos",
         "createLabel": "Crear nuevo Producto",
         "createOrEditLabel": "Crear o editar Producto",
-        "notFound": "No Productos found"
+        "notFound": "No tienes productos agregados"
       },
       "created": "Un nuevo Producto ha sido creado con el identificador {{ param }}",
       "updated": "Un Producto ha sido actualizado con el identificador {{ param }}",

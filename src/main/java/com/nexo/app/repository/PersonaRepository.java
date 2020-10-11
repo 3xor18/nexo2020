@@ -1,18 +1,25 @@
 package com.nexo.app.repository;
+
 import com.nexo.app.domain.Persona;
+import com.nexo.app.domain.Producto;
+
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 /**
- * Spring Data  repository for the Persona entity.
+ * Spring Data repository for the Persona entity.
  */
 @SuppressWarnings("unused")
 @Repository
 public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
-    @Query("select persona from Persona persona where persona.user.login = ?#{principal.username}")
-    List<Persona> findByUserIsCurrentUser();
-
+	/**
+	 * @return los datos del usuario actual
+	 */
+	@Query("select p from Persona p where p.user.login= ?#{principal.username}")
+	Optional<Persona> getUserActual();
 }

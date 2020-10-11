@@ -18,10 +18,10 @@ import { ProductoService } from './producto.service';
 })
 export class ProductoComponent implements OnInit, OnDestroy {
   currentAccount: any;
+  eventSubscriber: Subscription;
   productos: IProducto[];
   error: any;
   success: any;
-  eventSubscriber: Subscription;
   routeData: any;
   links: any;
   totalItems: any;

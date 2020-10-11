@@ -1,5 +1,6 @@
 package com.nexo.app.service;
 
+import com.nexo.app.domain.Persona;
 import com.nexo.app.service.dto.PersonaDTO;
 
 import java.util.List;
@@ -40,4 +41,9 @@ public interface PersonaService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    /**
+     * @return los datos del usuario actual
+     */
+    Optional<Persona> getUserActual();
 }

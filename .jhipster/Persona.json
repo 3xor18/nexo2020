@@ -12,9 +12,10 @@
         {
             "relationshipName": "user",
             "otherEntityName": "user",
-            "relationshipType": "many-to-one",
+            "relationshipType": "one-to-one",
             "otherEntityField": "login",
             "ownerSide": true,
+            "useJPADerivedIdentifier": false,
             "otherEntityRelationshipName": "persona"
         }
     ],

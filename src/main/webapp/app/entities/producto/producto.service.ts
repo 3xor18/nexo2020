@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import * as moment from 'moment';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
-import { catchError, map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
@@ -78,11 +78,12 @@ export class ProductoService {
     return res;
   }
 
-  /* Trae los productos del usuario Actual */
-  getMyProducts(req?: any): Observable<EntityArrayResponseType> {
-    const options = createRequestOption(req);
-    return this.http
-      .get<IProducto[]>(`${this.resourceUrl}/myproducts`, { params: options, observe: 'response' })
-      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  getMyProducts(page: number): Observable<any> {
+    return this.http.get<IProducto[]>(`${this.resourceUrl}/myproducts/${page}`).pipe(
+      catchError(e => {
+        this.utilsService.popupError(e.error.mensaje);
+        return throwError(e);
+      })
+    );
   }
 }

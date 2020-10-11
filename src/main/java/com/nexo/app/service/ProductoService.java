@@ -13,42 +13,41 @@ import java.util.Optional;
  */
 public interface ProductoService {
 
-    /**
-     * Save a producto.
-     *
-     * @param productoDTO the entity to save.
-     * @return the persisted entity.
-     */
-    ProductoDTO save(ProductoDTO productoDTO);
+	/**
+	 * Save a producto.
+	 *
+	 * @param productoDTO the entity to save.
+	 * @return the persisted entity.
+	 */
+	ProductoDTO save(ProductoDTO productoDTO);
 
-    /**
-     * Get all the productos.
-     *
-     * @param pageable the pagination information.
-     * @return the list of entities.
-     */
-    Page<ProductoDTO> findAll(Pageable pageable);
+	/**
+	 * Get all the productos.
+	 *
+	 * @param pageable the pagination information.
+	 * @return the list of entities.
+	 */
+	Page<ProductoDTO> findAll(Pageable pageable);
 
+	/**
+	 * Get the "id" producto.
+	 *
+	 * @param id the id of the entity.
+	 * @return the entity.
+	 */
+	Optional<ProductoDTO> findOne(Long id);
 
-    /**
-     * Get the "id" producto.
-     *
-     * @param id the id of the entity.
-     * @return the entity.
-     */
-    Optional<ProductoDTO> findOne(Long id);
+	/**
+	 * Delete the "id" producto.
+	 *
+	 * @param id the id of the entity.
+	 */
+	void delete(Long id);
 
-    /**
-     * Delete the "id" producto.
-     *
-     * @param id the id of the entity.
-     */
-    void delete(Long id);
-    
-    /**
-     * @param pageable
-     * @return Pageable de los productos del usuario Actual
-     * @throws NexoNotFoundException si no tiene productos registrados
-     */
-   Page<ProductoDTO> getMyProducts(Pageable pageable) throws NexoNotFoundException;
+	/**
+	 * @param pageable
+	 * @return Pageable de los productos del usuario Actual
+	 * @throws NexoNotFoundException si no tiene productos registrados
+	 */
+	Page<ProductoDTO> getMyProducts(Integer numberPage) throws NexoNotFoundException;
 }

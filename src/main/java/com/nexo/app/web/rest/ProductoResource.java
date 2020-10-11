@@ -139,31 +139,27 @@ public class ProductoResource {
 	}
 
 	/**
-	 * @param pageable
+	 * @param Numero de pagina solicitada
 	 * @return Pageable de los productos del usuario actual
 	 */
-	@GetMapping("/productos/myproducts")
-	public ResponseEntity<?> getMyProductos(Pageable pageable) {
-		for (int i = 0; i < 20; i++) {
-			log.debug("REST request to get a page of Productos");
-		}
+	@GetMapping("/productos/myproducts/{numberpage}")
+	public ResponseEntity<?> getMyProductos(@PathVariable Integer numberpage) {
 		log.debug("REST request to get a page of Productos");
 		Map<String, Object> response = new HashMap<>();
 		Page<ProductoDTO> page = null;
 		try {
-			page = productoService.getMyProducts(pageable);
+			page = productoService.getMyProducts(numberpage);
 		} catch (NexoNotFoundException e) {
-			response.put("mensaje", "Error al intentar consultar productos");
+			e.printStackTrace();
+			response.put("mensaje", e.getMessage());
 			response.put("error", e.getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
+			e.printStackTrace();
 			response.put("mensaje", "Error al intentar consultar productos");
 			response.put("error", e.getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
-
-		HttpHeaders headers = PaginationUtil
-				.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-		return ResponseEntity.ok().headers(headers).body(page.getContent());
+		return new ResponseEntity<Page<ProductoDTO>>(page, HttpStatus.OK);
 	}
 }
