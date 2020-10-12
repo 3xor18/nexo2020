@@ -36,6 +36,7 @@
             <th scope="col"  jhiSortBy="vendedorId"><span jhiTranslate="nexoApp.producto.vendedor">Vendedor</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="elaboradoEnId"><span jhiTranslate="nexoApp.producto.elaboradoEn">Elaborado En</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="comunaVentaId"><span jhiTranslate="nexoApp.producto.comunaVenta">Comuna Venta</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="unidadMedidaId"><span jhiTranslate="nexoApp.producto.unidadMedida">Unidad Medida</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -69,6 +70,11 @@
                 <td>
                     <div *ngIf="producto.comunaVentaId">
                         <a [routerLink]="['/comuna', producto.comunaVentaId , 'view' ]" >{{producto.comunaVentaId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="producto.unidadMedidaId">
+                        <a [routerLink]="['/unidad-medida', producto.unidadMedidaId , 'view' ]" >{{producto.unidadMedidaId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

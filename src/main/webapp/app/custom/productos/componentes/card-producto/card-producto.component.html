@@ -8,49 +8,50 @@
         <div class="row">
             <p class="card-text col-6">
                 <span>Codigo:</span>
-                <span>{{product?.descripcion}}</span>
+                <span>{{product?.codigo}}</span>
             </p>
-            <p class="card-text col-6">
-                <span>Cod-Barra:</span>
-                <span>{{product?.descripcion}}</span>
-            </p>
-        </div>
-        <div class="row">
             <p class="card-text col-6">
                 <span>Origen:</span>
                 <span>{{product?.elaboradoEnId}}</span>
             </p>
         </div>
+        <div class="row">
+            <p class="card-text col-12">
+                <span>
+                    <span>Cod-Barra:</span>{{product?.codigoBarra}}</span>
+            </p>
+
+        </div>
         <hr>
-        <span class="text-center">Precios</span>
+        <div class="text-center mb-2">Referente al precio</div>
         <div class="row">
             <p class="card-text col-6">
-                <span>Medida:</span>
-                <span>{{product?.descripcion}}</span>
+                <span>Medida En:</span>
+                <span>{{product?.unidadMedidaId}}</span>
             </p>
             <p class="card-text col-6">
                 <span>Cantidad:</span>
-                <span>{{product?.descripcion}}</span>
+                <span>{{product?.unidadMedidaVendida}}</span>
             </p>
         </div>
         <div class="row">
             <p class="card-text col-6">
                 <span>Compra:</span>
-                <span>{{product?.descripcion}}</span>
+                <span>{{product?.precioCompraBruto}}</span>
             </p>
             <p class="card-text col-6">
                 <span>MayorDespues:</span>
-                <span>{{product?.descripcion}}</span>
+                <span>{{product?.precioAlmayorDespuesde}}</span>
             </p>
         </div>
         <div class="row">
             <p class="card-text col-6">
                 <span>VentaDetal:</span>
-                <span>{{product?.descripcion}}</span>
+                <span>{{product?.precioVentaTotalDetal}}</span>
             </p>
             <p class="card-text col-6">
                 <span>VentaMayor:</span>
-                <span>{{product?.descripcion}}</span>
+                <span>{{product?.precioVentaTotalMayor}}</span>
             </p>
         </div>
     </div>

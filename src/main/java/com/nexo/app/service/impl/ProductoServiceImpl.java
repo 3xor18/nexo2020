@@ -8,17 +8,22 @@ import com.nexo.app.service.dto.ProductoDTO;
 import com.nexo.app.service.mapper.ProductoMapper;
 import com.nexo.app.web.rest.errors.NexoNotFoundException;
 
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 
 /**
  * Service Implementation for managing {@link Producto}.
@@ -30,6 +35,8 @@ public class ProductoServiceImpl implements ProductoService {
 	private final Integer PAGINADO_BY = 20;
 	private final String FILTRADO_BY_ID = "id";
 
+	 ModelMapper modelMapper = new ModelMapper();
+	
 	private final Logger log = LoggerFactory.getLogger(ProductoServiceImpl.class);
 
 	private final ProductoRepository productoRepository;
@@ -99,9 +106,13 @@ public class ProductoServiceImpl implements ProductoService {
 		if (numberPage == null || numberPage < 0) {
 			throw new NexoNotFoundException(Constants.NO_ENCONTRADO, "Error en el número de pagina");
 		}
-		Pageable pageable = PageRequest.of(numberPage, PAGINADO_BY, Sort.by(FILTRADO_BY_ID));
-		Page<Producto> productos = productoRepository.getAllMyProducts(pageable).orElseThrow(
+		 Pageable pageable = PageRequest.of(numberPage, PAGINADO_BY, Sort.by(FILTRADO_BY_ID));
+		 final Page<Producto> productos = productoRepository.getAllMyProducts(pageable).orElseThrow(
 				() -> new NexoNotFoundException(Constants.NO_ENCONTRADO, "No tienes Productos en tu inventario"));
-		return productos.map(productoMapper::toDto);
+		//return productos.map(productoMapper::toDto);
+		List<ProductoDTO> pro=productos.stream().map(producto -> modelMapper.map(producto, ProductoDTO.class))
+				.collect(Collectors.toList());
+		Page<ProductoDTO> courseRes = new PageImpl<>(pro);
+		return courseRes;
 	}
 }

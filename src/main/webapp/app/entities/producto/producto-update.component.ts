@@ -17,6 +17,8 @@ import { IPais } from 'app/shared/model/pais.model';
 import { PaisService } from 'app/entities/pais/pais.service';
 import { IComuna } from 'app/shared/model/comuna.model';
 import { ComunaService } from 'app/entities/comuna/comuna.service';
+import { IUnidadMedida } from 'app/shared/model/unidad-medida.model';
+import { UnidadMedidaService } from 'app/entities/unidad-medida/unidad-medida.service';
 
 @Component({
   selector: 'jhi-producto-update',
@@ -30,6 +32,8 @@ export class ProductoUpdateComponent implements OnInit {
   pais: IPais[];
 
   comunas: IComuna[];
+
+  unidadmedidas: IUnidadMedida[];
   fechaVencimientoDp: any;
 
   editForm = this.fb.group({
@@ -50,7 +54,8 @@ export class ProductoUpdateComponent implements OnInit {
     precioAlmayorDespuesde: [],
     vendedorId: [],
     elaboradoEnId: [],
-    comunaVentaId: []
+    comunaVentaId: [],
+    unidadMedidaId: []
   });
 
   constructor(
@@ -59,6 +64,7 @@ export class ProductoUpdateComponent implements OnInit {
     protected personaService: PersonaService,
     protected paisService: PaisService,
     protected comunaService: ComunaService,
+    protected unidadMedidaService: UnidadMedidaService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -89,6 +95,13 @@ export class ProductoUpdateComponent implements OnInit {
         map((response: HttpResponse<IComuna[]>) => response.body)
       )
       .subscribe((res: IComuna[]) => (this.comunas = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.unidadMedidaService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IUnidadMedida[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IUnidadMedida[]>) => response.body)
+      )
+      .subscribe((res: IUnidadMedida[]) => (this.unidadmedidas = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(producto: IProducto) {
@@ -110,7 +123,8 @@ export class ProductoUpdateComponent implements OnInit {
       precioAlmayorDespuesde: producto.precioAlmayorDespuesde,
       vendedorId: producto.vendedorId,
       elaboradoEnId: producto.elaboradoEnId,
-      comunaVentaId: producto.comunaVentaId
+      comunaVentaId: producto.comunaVentaId,
+      unidadMedidaId: producto.unidadMedidaId
     });
   }
 
@@ -148,7 +162,8 @@ export class ProductoUpdateComponent implements OnInit {
       precioAlmayorDespuesde: this.editForm.get(['precioAlmayorDespuesde']).value,
       vendedorId: this.editForm.get(['vendedorId']).value,
       elaboradoEnId: this.editForm.get(['elaboradoEnId']).value,
-      comunaVentaId: this.editForm.get(['comunaVentaId']).value
+      comunaVentaId: this.editForm.get(['comunaVentaId']).value,
+      unidadMedidaId: this.editForm.get(['unidadMedidaId']).value
     };
   }
 
@@ -177,6 +192,10 @@ export class ProductoUpdateComponent implements OnInit {
   }
 
   trackComunaById(index: number, item: IComuna) {
+    return item.id;
+  }
+
+  trackUnidadMedidaById(index: number, item: IUnidadMedida) {
     return item.id;
   }
 }

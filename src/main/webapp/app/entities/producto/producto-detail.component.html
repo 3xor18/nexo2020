@@ -79,6 +79,12 @@
                         <a [routerLink]="['/comuna', producto.comunaVentaId, 'view']">{{producto.comunaVentaId}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="nexoApp.producto.unidadMedida">Unidad Medida</span></dt>
+                <dd>
+                    <div *ngIf="producto.unidadMedidaId">
+                        <a [routerLink]="['/unidad-medida', producto.unidadMedidaId, 'view']">{{producto.unidadMedidaId}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

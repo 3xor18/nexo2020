@@ -3,12 +3,18 @@ import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 /**
  * A DTO for the {@link com.nexo.app.domain.UnidadMedida} entity.
  */
 public class UnidadMedidaDTO implements Serializable {
 
-    private Long id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
 
     private String estado;
 

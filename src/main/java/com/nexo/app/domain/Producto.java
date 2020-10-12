@@ -77,6 +77,10 @@ public class Producto implements Serializable {
     @JsonIgnoreProperties("productos")
     private Comuna comunaVenta;
 
+    @ManyToOne
+    @JsonIgnoreProperties("productos")
+    private UnidadMedida unidadMedida;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -305,6 +309,19 @@ public class Producto implements Serializable {
 
     public void setComunaVenta(Comuna comuna) {
         this.comunaVenta = comuna;
+    }
+
+    public UnidadMedida getUnidadMedida() {
+        return unidadMedida;
+    }
+
+    public Producto unidadMedida(UnidadMedida unidadMedida) {
+        this.unidadMedida = unidadMedida;
+        return this;
+    }
+
+    public void setUnidadMedida(UnidadMedida unidadMedida) {
+        this.unidadMedida = unidadMedida;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

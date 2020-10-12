@@ -19,6 +19,7 @@ export interface IProducto {
   vendedorId?: number;
   elaboradoEnId?: number;
   comunaVentaId?: number;
+  unidadMedidaId?: number;
 }
 
 export class Producto implements IProducto {
@@ -40,6 +41,7 @@ export class Producto implements IProducto {
     public precioAlmayorDespuesde?: number,
     public vendedorId?: number,
     public elaboradoEnId?: number,
-    public comunaVentaId?: number
+    public comunaVentaId?: number,
+    public unidadMedidaId?: number
   ) {}
 }

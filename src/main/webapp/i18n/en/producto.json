@@ -32,7 +32,8 @@
       "precioAlmayorDespuesde": "Precio Almayor Despuesde",
       "vendedor": "Vendedor",
       "elaboradoEn": "Elaborado En",
-      "comunaVenta": "Comuna Venta"
+      "comunaVenta": "Comuna Venta",
+      "unidadMedida": "Unidad Medida"
     }
   }
 }

@@ -26,5 +26,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="comuna"/>
 
+        <addForeignKeyConstraint baseColumnNames="unidad_medida_id"
+                                 baseTableName="producto"
+                                 constraintName="fk_producto_unidad_medida_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="unidad_medida"/>
+
     </changeSet>
 </databaseChangeLog>

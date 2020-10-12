@@ -1,4 +1,5 @@
 package com.nexo.app.service.dto;
+
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.io.Serializable;
@@ -9,229 +10,243 @@ import java.util.Objects;
  */
 public class ProductoDTO implements Serializable {
 
-    private Long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    private String nombre;
+	private Long id;
 
-    private String codigo;
+	private String nombre;
 
-    private String codigoBarra;
+	private String codigo;
 
-    private String descripcion;
+	private String codigoBarra;
 
-    private Double cantidadDisponible;
+	private String descripcion;
 
-    private Double alertaMinimo;
+	private Double cantidadDisponible;
 
-    private LocalDate fechaVencimiento;
+	private Double alertaMinimo;
 
-    private ZonedDateTime fechaBd;
+	private LocalDate fechaVencimiento;
 
-    private String estado;
+	private ZonedDateTime fechaBd;
 
-    private Double precioCompraBruto;
+	private String estado;
 
-    private Double precioVentaTotalDetal;
+	private Double precioCompraBruto;
 
-    private Double precioVentaTotalMayor;
+	private Double precioVentaTotalDetal;
 
-    private Double unidadMedidaVendida;
+	private Double precioVentaTotalMayor;
 
-    private Double precioAlmayorDespuesde;
+	private Double unidadMedidaVendida;
 
+	private Double precioAlmayorDespuesde;
 
-    private Long vendedorId;
+	private Long vendedorId;
 
-    private Long elaboradoEnId;
+	private Long elaboradoEnId;
 
-    private Long comunaVentaId;
+	private String elaboradoEnNombre;
 
-    public Long getId() {
-        return id;
-    }
+	private Long comunaVentaId;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	private Long unidadMedidaId;
 
-    public String getNombre() {
-        return nombre;
-    }
+	public String getElaboradoEnNombre() {
+		return elaboradoEnNombre;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setElaboradoEnNombre(String elaboradoEnNombre) {
+		this.elaboradoEnNombre = elaboradoEnNombre;
+	}
 
-    public String getCodigo() {
-        return codigo;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getCodigoBarra() {
-        return codigoBarra;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setCodigoBarra(String codigoBarra) {
-        this.codigoBarra = codigoBarra;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public String getCodigo() {
+		return codigo;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
-    public Double getCantidadDisponible() {
-        return cantidadDisponible;
-    }
+	public String getCodigoBarra() {
+		return codigoBarra;
+	}
 
-    public void setCantidadDisponible(Double cantidadDisponible) {
-        this.cantidadDisponible = cantidadDisponible;
-    }
+	public void setCodigoBarra(String codigoBarra) {
+		this.codigoBarra = codigoBarra;
+	}
 
-    public Double getAlertaMinimo() {
-        return alertaMinimo;
-    }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public void setAlertaMinimo(Double alertaMinimo) {
-        this.alertaMinimo = alertaMinimo;
-    }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    public LocalDate getFechaVencimiento() {
-        return fechaVencimiento;
-    }
+	public Double getCantidadDisponible() {
+		return cantidadDisponible;
+	}
 
-    public void setFechaVencimiento(LocalDate fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
-    }
+	public void setCantidadDisponible(Double cantidadDisponible) {
+		this.cantidadDisponible = cantidadDisponible;
+	}
 
-    public ZonedDateTime getFechaBd() {
-        return fechaBd;
-    }
+	public Double getAlertaMinimo() {
+		return alertaMinimo;
+	}
 
-    public void setFechaBd(ZonedDateTime fechaBd) {
-        this.fechaBd = fechaBd;
-    }
+	public void setAlertaMinimo(Double alertaMinimo) {
+		this.alertaMinimo = alertaMinimo;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public LocalDate getFechaVencimiento() {
+		return fechaVencimiento;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public void setFechaVencimiento(LocalDate fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
 
-    public Double getPrecioCompraBruto() {
-        return precioCompraBruto;
-    }
+	public ZonedDateTime getFechaBd() {
+		return fechaBd;
+	}
 
-    public void setPrecioCompraBruto(Double precioCompraBruto) {
-        this.precioCompraBruto = precioCompraBruto;
-    }
+	public void setFechaBd(ZonedDateTime fechaBd) {
+		this.fechaBd = fechaBd;
+	}
 
-    public Double getPrecioVentaTotalDetal() {
-        return precioVentaTotalDetal;
-    }
+	public String getEstado() {
+		return estado;
+	}
 
-    public void setPrecioVentaTotalDetal(Double precioVentaTotalDetal) {
-        this.precioVentaTotalDetal = precioVentaTotalDetal;
-    }
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
-    public Double getPrecioVentaTotalMayor() {
-        return precioVentaTotalMayor;
-    }
+	public Double getPrecioCompraBruto() {
+		return precioCompraBruto;
+	}
 
-    public void setPrecioVentaTotalMayor(Double precioVentaTotalMayor) {
-        this.precioVentaTotalMayor = precioVentaTotalMayor;
-    }
+	public void setPrecioCompraBruto(Double precioCompraBruto) {
+		this.precioCompraBruto = precioCompraBruto;
+	}
 
-    public Double getUnidadMedidaVendida() {
-        return unidadMedidaVendida;
-    }
+	public Double getPrecioVentaTotalDetal() {
+		return precioVentaTotalDetal;
+	}
 
-    public void setUnidadMedidaVendida(Double unidadMedidaVendida) {
-        this.unidadMedidaVendida = unidadMedidaVendida;
-    }
+	public void setPrecioVentaTotalDetal(Double precioVentaTotalDetal) {
+		this.precioVentaTotalDetal = precioVentaTotalDetal;
+	}
 
-    public Double getPrecioAlmayorDespuesde() {
-        return precioAlmayorDespuesde;
-    }
+	public Double getPrecioVentaTotalMayor() {
+		return precioVentaTotalMayor;
+	}
 
-    public void setPrecioAlmayorDespuesde(Double precioAlmayorDespuesde) {
-        this.precioAlmayorDespuesde = precioAlmayorDespuesde;
-    }
+	public void setPrecioVentaTotalMayor(Double precioVentaTotalMayor) {
+		this.precioVentaTotalMayor = precioVentaTotalMayor;
+	}
 
-    public Long getVendedorId() {
-        return vendedorId;
-    }
+	public Double getUnidadMedidaVendida() {
+		return unidadMedidaVendida;
+	}
 
-    public void setVendedorId(Long personaId) {
-        this.vendedorId = personaId;
-    }
+	public void setUnidadMedidaVendida(Double unidadMedidaVendida) {
+		this.unidadMedidaVendida = unidadMedidaVendida;
+	}
 
-    public Long getElaboradoEnId() {
-        return elaboradoEnId;
-    }
+	public Double getPrecioAlmayorDespuesde() {
+		return precioAlmayorDespuesde;
+	}
 
-    public void setElaboradoEnId(Long paisId) {
-        this.elaboradoEnId = paisId;
-    }
+	public void setPrecioAlmayorDespuesde(Double precioAlmayorDespuesde) {
+		this.precioAlmayorDespuesde = precioAlmayorDespuesde;
+	}
 
-    public Long getComunaVentaId() {
-        return comunaVentaId;
-    }
+	public Long getVendedorId() {
+		return vendedorId;
+	}
 
-    public void setComunaVentaId(Long comunaId) {
-        this.comunaVentaId = comunaId;
-    }
+	public void setVendedorId(Long personaId) {
+		this.vendedorId = personaId;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public Long getElaboradoEnId() {
+		return elaboradoEnId;
+	}
 
-        ProductoDTO productoDTO = (ProductoDTO) o;
-        if (productoDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), productoDTO.getId());
-    }
+	public void setElaboradoEnId(Long paisId) {
+		this.elaboradoEnId = paisId;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+	public Long getComunaVentaId() {
+		return comunaVentaId;
+	}
 
-    @Override
-    public String toString() {
-        return "ProductoDTO{" +
-            "id=" + getId() +
-            ", nombre='" + getNombre() + "'" +
-            ", codigo='" + getCodigo() + "'" +
-            ", codigoBarra='" + getCodigoBarra() + "'" +
-            ", descripcion='" + getDescripcion() + "'" +
-            ", cantidadDisponible=" + getCantidadDisponible() +
-            ", alertaMinimo=" + getAlertaMinimo() +
-            ", fechaVencimiento='" + getFechaVencimiento() + "'" +
-            ", fechaBd='" + getFechaBd() + "'" +
-            ", estado='" + getEstado() + "'" +
-            ", precioCompraBruto=" + getPrecioCompraBruto() +
-            ", precioVentaTotalDetal=" + getPrecioVentaTotalDetal() +
-            ", precioVentaTotalMayor=" + getPrecioVentaTotalMayor() +
-            ", unidadMedidaVendida=" + getUnidadMedidaVendida() +
-            ", precioAlmayorDespuesde=" + getPrecioAlmayorDespuesde() +
-            ", vendedor=" + getVendedorId() +
-            ", elaboradoEn=" + getElaboradoEnId() +
-            ", comunaVenta=" + getComunaVentaId() +
-            "}";
-    }
+	public void setComunaVentaId(Long comunaId) {
+		this.comunaVentaId = comunaId;
+	}
+
+	public Long getUnidadMedidaId() {
+		return unidadMedidaId;
+	}
+
+	public void setUnidadMedidaId(Long unidadMedidaId) {
+		this.unidadMedidaId = unidadMedidaId;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+
+		ProductoDTO productoDTO = (ProductoDTO) o;
+		if (productoDTO.getId() == null || getId() == null) {
+			return false;
+		}
+		return Objects.equals(getId(), productoDTO.getId());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId());
+	}
+
+	@Override
+	public String toString() {
+		return "ProductoDTO{" + "id=" + getId() + ", nombre='" + getNombre() + "'" + ", codigo='" + getCodigo() + "'"
+				+ ", codigoBarra='" + getCodigoBarra() + "'" + ", descripcion='" + getDescripcion() + "'"
+				+ ", cantidadDisponible=" + getCantidadDisponible() + ", alertaMinimo=" + getAlertaMinimo()
+				+ ", fechaVencimiento='" + getFechaVencimiento() + "'" + ", fechaBd='" + getFechaBd() + "'"
+				+ ", estado='" + getEstado() + "'" + ", precioCompraBruto=" + getPrecioCompraBruto()
+				+ ", precioVentaTotalDetal=" + getPrecioVentaTotalDetal() + ", precioVentaTotalMayor="
+				+ getPrecioVentaTotalMayor() + ", unidadMedidaVendida=" + getUnidadMedidaVendida()
+				+ ", precioAlmayorDespuesde=" + getPrecioAlmayorDespuesde() + ", vendedor=" + getVendedorId()
+				+ ", elaboradoEn=" + getElaboradoEnId() + ", comunaVenta=" + getComunaVentaId() + ", unidadMedida="
+				+ getUnidadMedidaId() + "}";
+	}
 }

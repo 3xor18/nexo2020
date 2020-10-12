@@ -3,9 +3,9 @@
     "producto": {
       "home": {
         "title": "Productos",
-        "createLabel": "Agregar producto",
+        "createLabel": "Crear Producto",
         "createOrEditLabel": "Crear o editar Producto",
-        "notFound": "No tienes productos agregados"
+        "notFound": "No tienes productos en tu inventario"
       },
       "created": "Un nuevo Producto ha sido creado con el identificador {{ param }}",
       "updated": "Un Producto ha sido actualizado con el identificador {{ param }}",
@@ -32,7 +32,8 @@
       "precioAlmayorDespuesde": "Precio Almayor Despuesde",
       "vendedor": "Vendedor",
       "elaboradoEn": "Elaborado En",
-      "comunaVenta": "Comuna Venta"
+      "comunaVenta": "Comuna Venta",
+      "unidadMedida": "Unidad Medida"
     }
   }
 }

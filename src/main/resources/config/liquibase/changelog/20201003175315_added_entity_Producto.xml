@@ -67,6 +67,9 @@
             <column name="comuna_venta_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="unidad_medida_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="producto" columnName="fecha_bd" columnDataType="datetime"/>
