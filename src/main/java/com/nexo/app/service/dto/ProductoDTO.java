@@ -55,6 +55,16 @@ public class ProductoDTO implements Serializable {
 
 	private Long unidadMedidaId;
 
+	private String unidadMedidaNombre;
+
+	public String getUnidadMedidaNombre() {
+		return unidadMedidaNombre;
+	}
+
+	public void setUnidadMedidaNombre(String unidadMedidaNombre) {
+		this.unidadMedidaNombre = unidadMedidaNombre;
+	}
+
 	public String getElaboradoEnNombre() {
 		return elaboradoEnNombre;
 	}

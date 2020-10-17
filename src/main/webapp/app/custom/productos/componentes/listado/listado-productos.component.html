@@ -1,8 +1,8 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="nexoApp.producto.home.title">Productos</span>
+        <span jhiTranslate="nexoApp.producto.home.title" class="sub-titulo">Productos</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-producto"
-            [routerLink]="['/producto/new']">
+            (click)="abrirModalCrearProducto()">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span jhiTranslate="nexoApp.producto.home.createLabel">
                 Agregar al inventario
@@ -42,3 +42,5 @@
     </ul>
     <!-- Fin Paginador -->
 </div>
+
+<jhi-modal-agregar-producto></jhi-modal-agregar-producto>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductoService } from '../../../../entities/producto/producto.service';
 import { IProducto } from '../../../../shared/model/producto.model';
 import { AccountService } from '../../../../core/auth/account.service';
@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { UtilsService } from '../../../utils/utils.service';
 import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
+import { ModalAgregarProductoComponent } from '../modal-agregar/modal-agregar-producto.component';
 
 @Component({
   selector: 'jhi-listado-productos',
@@ -14,6 +15,8 @@ import { JhiEventManager } from 'ng-jhipster';
   styles: []
 })
 export class ListadoProductosComponent implements OnInit {
+  @ViewChild(ModalAgregarProductoComponent, { static: false }) modalAgregar: ModalAgregarProductoComponent;
+
   currentAccount: any;
   eventSubscriber: Subscription;
   productos: IProducto[] = [];
@@ -60,5 +63,10 @@ export class ListadoProductosComponent implements OnInit {
         this.paginas = new Array(res.totalPages).fill(0).map((valor, indice) => indice + 1);
       }
     });
+  }
+
+  /* Abre el modal de crear o editar producto */
+  abrirModalCrearProducto() {
+    this.modalAgregar.toggle();
   }
 }

@@ -160,10 +160,6 @@ public class ProductoResource {
 			response.put("error", e.getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
-		for (int i = 0; i < 50; i++) {
-			page.forEach(x->{log.info(">>>>"+x.getElaboradoEnNombre());});
-			
-		}
 		return new ResponseEntity<Page<ProductoDTO>>(page, HttpStatus.OK);
 	}
 }
