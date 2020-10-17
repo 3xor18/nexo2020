@@ -2,6 +2,7 @@ package com.nexo.app.web.rest;
 
 import com.nexo.app.service.ComunaService;
 import com.nexo.app.web.rest.errors.BadRequestAlertException;
+import com.nexo.app.web.rest.errors.NexoNotFoundException;
 import com.nexo.app.service.dto.ComunaDTO;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -9,13 +10,15 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -115,4 +118,29 @@ public class ComunaResource {
         comunaService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+    
+    /**
+     * @param idRegion
+     * @return las comunas de la region
+     */
+    @GetMapping("/comunas/porregion/{idRegion}")
+	public ResponseEntity<?> getMyProductos(@PathVariable Long idRegion) {
+		log.debug("REST request to get comunas of region");
+		Map<String, Object> response = new HashMap<>();
+		List<ComunaDTO> comunas = null;
+		try {
+			comunas = comunaService.findByRegion(idRegion);
+		} catch (NexoNotFoundException e) {
+			e.printStackTrace();
+			response.put("mensaje", e.getMessage());
+			response.put("error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.put("mensaje", "Error al intentar consultar Comunas");
+			response.put("error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<ComunaDTO>>(comunas, HttpStatus.OK);
+	}
 }

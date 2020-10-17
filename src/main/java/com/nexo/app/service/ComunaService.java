@@ -1,6 +1,7 @@
 package com.nexo.app.service;
 
 import com.nexo.app.service.dto.ComunaDTO;
+import com.nexo.app.web.rest.errors.NexoNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,4 +41,11 @@ public interface ComunaService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    /**
+     * @param idRegion
+     * @return las comunas de la region
+     * @throws NexoNotFoundException 
+     */
+    List<ComunaDTO> findByRegion(Long idRegion) throws NexoNotFoundException;
 }

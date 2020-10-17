@@ -5,12 +5,20 @@ import { ListadoProductosComponent } from './componentes/listado/listado-product
 import { CardProductoComponent } from './componentes/card-producto/card-producto.component';
 import { NexoSharedModule } from '../../shared/shared.module';
 import { ModalAgregarProductoComponent } from './componentes/modal-agregar/modal-agregar-producto.component';
+import { DatosBasicosComponent } from './componentes/modal-agregar/datos-basicos/datos-basicos.component';
+import { DatosDeliveryComponent } from './componentes/modal-agregar/datos-delivery/datos-delivery.component';
 
 /* Componentes */
 
 @NgModule({
-  declarations: [ListadoProductosComponent, CardProductoComponent, ModalAgregarProductoComponent],
-  exports: [ListadoProductosComponent, CardProductoComponent, ModalAgregarProductoComponent],
+  declarations: [
+    ListadoProductosComponent,
+    CardProductoComponent,
+    ModalAgregarProductoComponent,
+    DatosBasicosComponent,
+    DatosDeliveryComponent
+  ],
+  exports: [ListadoProductosComponent, CardProductoComponent, ModalAgregarProductoComponent, DatosBasicosComponent, DatosDeliveryComponent],
   imports: [NexoSharedModule, CommonModule, ProductosRoutingModule]
 })
 export class ProductosModule {}

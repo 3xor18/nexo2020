@@ -1,0 +1,80 @@
+<!-- Formulario -->
+<!-- primera linea -->
+<div class="row margin-nexo pt-2">
+    <div class="col-6">
+        <label class="mb-0">Nombre</label>
+        <input type="text" class="form-control" placeholder="nombre del producto" />
+    </div>
+    <div class="col-3">
+        <label class="mb-0">Codigo interno</label>
+        <input type="text" class="form-control" placeholder="(opcional) codigo interno" />
+    </div>
+    <div class="col-3">
+        <label class="mb-0">Codigo de Barra</label>
+        <input type="text" class="form-control" placeholder="(opcional) codigo de barra" />
+    </div>
+</div>
+<!-- fin primera linea -->
+<!-- segunda linea -->
+<div class="row margin-nexo pt-2">
+    <div class="col-12">
+        <label class="mb-0">Descripción</label>
+        <textarea name="" id="" cols="30" rows="3" class="form-control"
+            placeholder="Descripción detallada del producto a registrar"></textarea>
+    </div>
+</div>
+<!-- fin segunda linea -->
+<!-- tercera linea -->
+<div class="row margin-nexo pt-2">
+    <div class="col-3" *ngIf="unidadesMedidas?.length>0">
+        <label class="mb-0">Unidad-Medida</label>
+        <select class="custom-select">
+            <option *ngFor="let unidad of unidadesMedidas" value="{{unidad.id}}">{{unidad.nombre}}</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <label class="mb-0">Unidad-Medida a vender</label>
+        <input type="text" class="form-control" placeholder="" value="1" />
+    </div>
+    <div class="col-3" *ngIf="paises?.length>0">
+        <label class="mb-0">País de origen</label>
+        <select class="custom-select">
+            <option *ngFor="let pais of paises" value="{{pais.id}}">{{pais.nombre}}</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <label class="mb-0">Cantidad Disponible</label>
+        <input type="text" class="form-control" placeholder="" value="1" />
+    </div>
+</div>
+<!-- fin tercera linea -->
+<!-- cuarta linea -->
+<div class="row margin-nexo pt-2">
+    <div class="col-3">
+        <label class="mb-0">Precio de compra</label>
+        <input type="text" class="form-control" placeholder="" />
+    </div>
+    <div class="col-3">
+        <label class="mb-0">Precio al detal </label>
+        <input type="text" class="form-control" placeholder="" />
+    </div>
+    <div class="col-3">
+        <label class="mb-0">Precio al mayor </label>
+        <input type="text" class="form-control" placeholder="" />
+    </div>
+    <div class="col-3">
+        <label class="mb-0">Precio al mayor después de:</label>
+        <input type="text" class="form-control" placeholder="(opcional)" />
+    </div>
+</div>
+<!-- fin cuarta linea -->
+<!-- quinta linea -->
+<div class="row margin-nexo pt-2">
+    <div class="col-12">
+        <label class="mb-0">Imagen</label>
+        <input id="input-2" name="input2[]" type="file" class="file" data-show-upload="false" data-show-caption="true"
+            multiple>
+    </div>
+</div>
+<!-- Fin de quinta linea -->
+<!-- fin de formulario -->

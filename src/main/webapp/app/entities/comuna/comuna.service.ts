@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IComuna } from 'app/shared/model/comuna.model';
+import { catchError } from 'rxjs/operators';
+import { UtilsService } from '../../custom/utils/utils.service';
 
 type EntityResponseType = HttpResponse<IComuna>;
 type EntityArrayResponseType = HttpResponse<IComuna[]>;
@@ -13,7 +15,7 @@ type EntityArrayResponseType = HttpResponse<IComuna[]>;
 export class ComunaService {
   public resourceUrl = SERVER_API_URL + 'api/comunas';
 
-  constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient, protected utilsService: UtilsService) {}
 
   create(comuna: IComuna): Observable<EntityResponseType> {
     return this.http.post<IComuna>(this.resourceUrl, comuna, { observe: 'response' });
@@ -34,5 +36,15 @@ export class ComunaService {
 
   delete(id: number): Observable<HttpResponse<any>> {
     return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  /* Retorna las Comunas por Region */
+  getByRegion(idRegion: number): Observable<IComuna[]> {
+    return this.http.get<IComuna[]>(`${this.resourceUrl}/porregion/${idRegion}`).pipe(
+      catchError(e => {
+        this.utilsService.popupError(e.error.mensaje);
+        return throwError(e);
+      })
+    );
   }
 }

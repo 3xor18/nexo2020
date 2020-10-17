@@ -1,6 +1,7 @@
 package com.nexo.app.service;
 
 import com.nexo.app.service.dto.RegionDTO;
+import com.nexo.app.web.rest.errors.NexoNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,4 +41,10 @@ public interface RegionService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    /**
+     * @return listado de regiones del pais
+     * @throws NexoNotFoundException 
+     */
+    List<RegionDTO> findByPais(Long id) throws NexoNotFoundException;
 }

@@ -1,0 +1,36 @@
+<!-- Formulario -->
+
+<!-- primera linea -->
+<div class="row margin-nexo pt-2">
+    <!-- pais -->
+    <div class="col-3" *ngIf="paises?.length>0">
+        <label class="mb-0">País de origen</label>
+        <select class="custom-select" #paisSelect (change)='paisChange(paisSelect.value)'>
+            <option *ngFor="let pais of paises" [value]="pais.id">{{pais.nombre}}</option>
+        </select>
+    </div>
+    <!-- Region -->
+    <div class="col-3" *ngIf="regiones?.length>0">
+        <label class="mb-0">Región</label>
+        <select class="custom-select" #regionSelect (change)='regionChange(regionSelect.value)'>
+            <option *ngFor="let region of regiones" [value]="region.id">{{region.nombre}}</option>
+        </select>
+    </div>
+    <!-- comuna -->
+    <div class="col-3" *ngIf="comunas?.length>0">
+        <label class="mb-0">Comuna</label>
+        <select class="custom-select" #comunaSelect>
+            <option *ngFor="let comuna of comunas" [value]="comuna.id">{{comuna.nombre}}</option>
+        </select>
+    </div>
+    <!-- Boton agregar -->
+    <div class="col-3" *ngIf="comunas?.length>0">
+        <button class="btn btn-primary mt-4" type="button">Agregar</button>
+    </div>
+</div>
+<!-- fin primera linea -->
+
+
+
+<!--fin Sexta linea -->
+<!-- fin de formulario -->
