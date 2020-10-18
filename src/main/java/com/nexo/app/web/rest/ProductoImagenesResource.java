@@ -2,6 +2,7 @@ package com.nexo.app.web.rest;
 
 import com.nexo.app.service.ProductoImagenesService;
 import com.nexo.app.web.rest.errors.BadRequestAlertException;
+import com.nexo.app.web.rest.errors.NexoNotFoundException;
 import com.nexo.app.service.dto.ProductoImagenesDTO;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -9,13 +10,15 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -115,4 +118,30 @@ public class ProductoImagenesResource {
         productoImagenesService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+    
+    @PostMapping("/producto-imagenes/newproduct")
+	public ResponseEntity<?> createNewProducto(@RequestBody ProductoImagenesDTO dtoIn) throws URISyntaxException {
+		log.debug("post for save a producto");
+		Map<String, Object> response = new HashMap<>();
+		ProductoImagenesDTO dto=null;
+		if (dtoIn.getId() != null) {
+			response.put("mensaje", "Error, ya posee id");
+			response.put("mensaje", "Error, ya posee id");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		try {
+			dto = productoImagenesService.agregarImagen(dtoIn);
+		} catch (NexoNotFoundException e) {
+			e.printStackTrace();
+			response.put("mensaje", e.getMessage());
+			response.put("error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.put("mensaje", "Error al intentar crear el producto");
+			response.put("error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<ProductoImagenesDTO>(dto, HttpStatus.OK);
+	}
 }

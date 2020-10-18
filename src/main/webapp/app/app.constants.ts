@@ -12,3 +12,6 @@ export const SI = 'SI';
 export const NO = 'NO';
 export const ACTIVO = 'ACTIVO';
 export const INACTIVO = 'INACTIVO';
+
+export const IMAGEN_PRODUCTO = 'IMAGEN_PRODUCTO';
+export const IMAGEN_PERFIL = 'IMAGEN_PERFIL';

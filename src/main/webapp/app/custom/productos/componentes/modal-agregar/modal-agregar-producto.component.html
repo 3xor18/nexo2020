@@ -9,7 +9,8 @@
             <div class="sub-titulo" *ngIf="seccion===3">Impuestos del producto</div>
         </div>
         <!-- Formulario -->
-        <jhi-datos-basicos *ngIf="seccion===1" [paises]="paises" [unidadesMedidas]="unidadesMedidas">
+        <jhi-datos-basicos *ngIf="seccion===1" [paises]="paises" [unidadesMedidas]="unidadesMedidas"
+            (respuesta)="agregarDelivery($event)">
         </jhi-datos-basicos>
         <jhi-datos-delivery *ngIf="seccion===2" [paises]="paises">
         </jhi-datos-delivery>

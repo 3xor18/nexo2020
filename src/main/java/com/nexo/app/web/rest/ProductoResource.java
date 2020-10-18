@@ -162,4 +162,35 @@ public class ProductoResource {
 		}
 		return new ResponseEntity<Page<ProductoDTO>>(page, HttpStatus.OK);
 	}
+	
+	/**
+	 * @param productoDTO
+	 * @return un nuevo producto creado al vendedor
+	 * @throws URISyntaxException
+	 */
+	@PostMapping("/productos/newproduct")
+	public ResponseEntity<?> createNewProducto(@RequestBody ProductoDTO productoDTO) throws URISyntaxException {
+		log.debug("post for save a producto");
+		Map<String, Object> response = new HashMap<>();
+		ProductoDTO dto=null;
+		if (productoDTO.getId() != null) {
+			response.put("mensaje", "Error en el producto");
+			response.put("error","Error en el producto");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		try {
+			dto = productoService.crearProducto(productoDTO);
+		} catch (NexoNotFoundException e) {
+			e.printStackTrace();
+			response.put("mensaje", e.getMessage());
+			response.put("error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.put("mensaje", "Error al intentar crear el producto");
+			response.put("error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<ProductoDTO>(dto, HttpStatus.OK);
+	}
 }

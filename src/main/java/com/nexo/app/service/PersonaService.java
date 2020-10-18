@@ -46,4 +46,5 @@ public interface PersonaService {
      * @return los datos del usuario actual
      */
     Optional<Persona> getUserActual();
+    
 }

@@ -1,5 +1,6 @@
 package com.nexo.app.service;
 
+import com.nexo.app.domain.UnidadMedida;
 import com.nexo.app.service.dto.UnidadMedidaDTO;
 
 import java.util.List;
@@ -40,4 +41,10 @@ public interface UnidadMedidaService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    /**
+     * @param id
+     * @return la unidad de medida
+     */
+    Optional<UnidadMedida> findById(Long id);
 }

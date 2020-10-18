@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import * as moment from 'moment';
@@ -16,9 +16,15 @@ type EntityArrayResponseType = HttpResponse<IProducto[]>;
 
 @Injectable({ providedIn: 'root' })
 export class ProductoService {
+  private _notificarCambio = new EventEmitter<IProducto>();
+
   public resourceUrl = SERVER_API_URL + 'api/productos';
 
   constructor(protected http: HttpClient, protected utilsService: UtilsService) {}
+
+  get notificarCambio(): EventEmitter<IProducto> {
+    return this._notificarCambio;
+  }
 
   create(producto: IProducto): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(producto);
@@ -80,6 +86,16 @@ export class ProductoService {
 
   getMyProducts(page: number): Observable<any> {
     return this.http.get<IProducto[]>(`${this.resourceUrl}/myproducts/${page}`).pipe(
+      catchError(e => {
+        this.utilsService.popupError(e.error.mensaje);
+        return throwError(e);
+      })
+    );
+  }
+
+  /* Crea un nuevo producto */
+  crearProducto(producto: IProducto): Observable<IProducto> {
+    return this.http.post<IProducto>(`${this.resourceUrl}/newproduct`, producto).pipe(
       catchError(e => {
         this.utilsService.popupError(e.error.mensaje);
         return throwError(e);

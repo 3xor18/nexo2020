@@ -87,4 +87,9 @@ public class UnidadMedidaServiceImpl implements UnidadMedidaService {
         log.debug("Request to delete UnidadMedida : {}", id);
         unidadMedidaRepository.deleteById(id);
     }
+
+	@Override
+	public Optional<UnidadMedida> findById(Long id) {
+		return unidadMedidaRepository.getById(id);
+	}
 }

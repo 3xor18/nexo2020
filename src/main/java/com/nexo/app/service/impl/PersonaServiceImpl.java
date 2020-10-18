@@ -93,4 +93,6 @@ public class PersonaServiceImpl implements PersonaService {
 		  log.debug("Consulta de datos actuales");
 	       return  personaRepository.getUserActual();
 	}
+
+	
 }

@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import * as moment from 'moment';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IProductoImagenes } from 'app/shared/model/producto-imagenes.model';
+import { UtilsService } from '../../custom/utils/utils.service';
 
 type EntityResponseType = HttpResponse<IProductoImagenes>;
 type EntityArrayResponseType = HttpResponse<IProductoImagenes[]>;
@@ -17,7 +18,7 @@ type EntityArrayResponseType = HttpResponse<IProductoImagenes[]>;
 export class ProductoImagenesService {
   public resourceUrl = SERVER_API_URL + 'api/producto-imagenes';
 
-  constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient, protected utilsService: UtilsService) {}
 
   create(productoImagenes: IProductoImagenes): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(productoImagenes);
@@ -71,5 +72,15 @@ export class ProductoImagenesService {
       });
     }
     return res;
+  }
+
+  /* agrega una imagen al producto */
+  agreagarImagenAProducto(imagen: IProductoImagenes): Observable<IProductoImagenes> {
+    return this.http.post<IProductoImagenes>(`${this.resourceUrl}/newproduct`, imagen).pipe(
+      catchError(e => {
+        this.utilsService.popupError(e.error.mensaje);
+        return throwError(e);
+      })
+    );
   }
 }

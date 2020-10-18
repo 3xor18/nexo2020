@@ -90,6 +90,9 @@ spring:
     jpa:
       repositories:
         bootstrap-mode: deferred
+  servlet:
+    multipart.max-file-size: 150000000
+    multipart.max-request-size: 150000000
   jpa:
     open-in-view: false
     properties:

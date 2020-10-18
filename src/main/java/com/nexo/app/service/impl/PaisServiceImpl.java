@@ -87,4 +87,9 @@ public class PaisServiceImpl implements PaisService {
         log.debug("Request to delete Pais : {}", id);
         paisRepository.deleteById(id);
     }
+
+	@Override
+	public Optional<Pais> findById(Long id) {
+		return  paisRepository.findById(id);
+	}
 }

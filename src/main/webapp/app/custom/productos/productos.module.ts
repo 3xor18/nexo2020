@@ -7,6 +7,7 @@ import { NexoSharedModule } from '../../shared/shared.module';
 import { ModalAgregarProductoComponent } from './componentes/modal-agregar/modal-agregar-producto.component';
 import { DatosBasicosComponent } from './componentes/modal-agregar/datos-basicos/datos-basicos.component';
 import { DatosDeliveryComponent } from './componentes/modal-agregar/datos-delivery/datos-delivery.component';
+import { DatosImpuestosComponent } from './componentes/modal-agregar/datos-impuestos/datos-impuestos.component';
 
 /* Componentes */
 
@@ -16,9 +17,17 @@ import { DatosDeliveryComponent } from './componentes/modal-agregar/datos-delive
     CardProductoComponent,
     ModalAgregarProductoComponent,
     DatosBasicosComponent,
-    DatosDeliveryComponent
+    DatosDeliveryComponent,
+    DatosImpuestosComponent
   ],
-  exports: [ListadoProductosComponent, CardProductoComponent, ModalAgregarProductoComponent, DatosBasicosComponent, DatosDeliveryComponent],
+  exports: [
+    ListadoProductosComponent,
+    CardProductoComponent,
+    ModalAgregarProductoComponent,
+    DatosBasicosComponent,
+    DatosDeliveryComponent,
+    DatosImpuestosComponent
+  ],
   imports: [NexoSharedModule, CommonModule, ProductosRoutingModule]
 })
 export class ProductosModule {}

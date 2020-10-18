@@ -98,4 +98,26 @@ export class UtilsService {
     }
     return amount;
   }
+
+  /* popup d info */
+  async popupInfo(mensaje?: string) {
+    return await Swal.fire(mensaje).then(x => 'OK');
+  }
+
+  /* Quita los puntos */
+  quitarPuntos(valor: string) {
+    return valor.replace('.', '');
+  }
+
+  /* remplaza las comas */
+  remplazarPuntosPorComas(valor: string) {
+    return valor.replace(',', '.');
+  }
+
+  /* deja en formato BD el monto */
+  formatearMontoToSave(monto: string) {
+    monto = this.quitarPuntos(monto);
+    monto = this.remplazarPuntosPorComas(monto);
+    return monto;
+  }
 }

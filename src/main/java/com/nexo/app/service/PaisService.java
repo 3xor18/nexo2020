@@ -1,5 +1,6 @@
 package com.nexo.app.service;
 
+import com.nexo.app.domain.Pais;
 import com.nexo.app.service.dto.PaisDTO;
 
 import java.util.List;
@@ -40,4 +41,10 @@ public interface PaisService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    /**
+     * @param id del pais
+     * @return pais
+     */
+    Optional<Pais> findById(Long id);
 }

@@ -7,7 +7,8 @@ import { UnidadMedidaService } from '../../../../entities/unidad-medida/unidad-m
 import { IUnidadMedida } from '../../../../shared/model/unidad-medida.model';
 import { DatosBasicosComponent } from './datos-basicos/datos-basicos.component';
 import { DatosDeliveryComponent } from './datos-delivery/datos-delivery.component';
-
+import * as constantes from '../../../../app.constants';
+import { UtilsService } from '../../../utils/utils.service';
 @Component({
   selector: 'jhi-modal-agregar-producto',
   templateUrl: './modal-agregar-producto.component.html',
@@ -26,7 +27,11 @@ export class ModalAgregarProductoComponent implements OnInit {
   REGRESAR = 'REGRESAR';
   SEGUIR = 'SEGUIR';
 
-  constructor(protected paisService: PaisService, protected unidadesMedidaService: UnidadMedidaService) {}
+  constructor(
+    protected paisService: PaisService,
+    protected unidadesMedidaService: UnidadMedidaService,
+    protected utilsService: UtilsService
+  ) {}
 
   ngOnInit() {
     this.seccion = 1;
@@ -69,6 +74,24 @@ export class ModalAgregarProductoComponent implements OnInit {
       this.seccion++;
     } else {
       this.seccion--;
+    }
+  }
+
+  agregarDelivery(res: string) {
+    const respuesta = res;
+    if (respuesta === constantes.SI) {
+      this.seccion++;
+    } else {
+      this.preguntarAgregarImpuestos();
+    }
+  }
+
+  async preguntarAgregarImpuestos() {
+    const resp = await this.utilsService.popupPregunta('¿Desea agregar cargos por delivery?');
+    if (resp === constantes.SI) {
+      this.seccion++;
+    } else {
+      this.toggle();
     }
   }
 }

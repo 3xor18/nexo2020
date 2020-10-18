@@ -1,10 +1,16 @@
 package com.nexo.app.service.impl;
 
 import com.nexo.app.service.ProductoImagenesService;
+import com.nexo.app.service.ProductoService;
+import com.nexo.app.service.UtilsService;
+import com.nexo.app.config.Constants;
+import com.nexo.app.domain.Producto;
 import com.nexo.app.domain.ProductoImagenes;
 import com.nexo.app.repository.ProductoImagenesRepository;
 import com.nexo.app.service.dto.ProductoImagenesDTO;
 import com.nexo.app.service.mapper.ProductoImagenesMapper;
+import com.nexo.app.web.rest.errors.NexoNotFoundException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,10 +34,17 @@ public class ProductoImagenesServiceImpl implements ProductoImagenesService {
     private final ProductoImagenesRepository productoImagenesRepository;
 
     private final ProductoImagenesMapper productoImagenesMapper;
+    
+    private final UtilsService utilsService;
+    
+    private final ProductoService productoService;
 
-    public ProductoImagenesServiceImpl(ProductoImagenesRepository productoImagenesRepository, ProductoImagenesMapper productoImagenesMapper) {
+    public ProductoImagenesServiceImpl(ProductoImagenesRepository productoImagenesRepository, ProductoImagenesMapper productoImagenesMapper,
+    		UtilsService utilsService,ProductoService productoService) {
         this.productoImagenesRepository = productoImagenesRepository;
         this.productoImagenesMapper = productoImagenesMapper;
+        this.utilsService=utilsService;
+        this.productoService=productoService;
     }
 
     /**
@@ -87,4 +100,16 @@ public class ProductoImagenesServiceImpl implements ProductoImagenesService {
         log.debug("Request to delete ProductoImagenes : {}", id);
         productoImagenesRepository.deleteById(id);
     }
+
+	@Override
+	public ProductoImagenesDTO agregarImagen(ProductoImagenesDTO dtoIn) throws NexoNotFoundException {
+		ProductoImagenes imagen=new ProductoImagenes();
+		Producto producto=productoService.findById(dtoIn.getProductoId()).orElseThrow(()->new NexoNotFoundException(Constants.NO_ENCONTRADO,"Producto no encontrado"));
+		imagen.setEstado(Constants.ACTIVO);
+		imagen.setFechaBd(utilsService.giveToday());
+		imagen.setPath(dtoIn.getPath());
+		imagen.setProducto(producto);
+		ProductoImagenes newImagen= productoImagenesRepository.save(imagen);
+		 return productoImagenesMapper.toDto(newImagen);
+	}
 }

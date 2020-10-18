@@ -2,6 +2,7 @@ package com.nexo.app.service;
 
 import com.nexo.app.config.Constants;
 import com.nexo.app.domain.Authority;
+import com.nexo.app.domain.Persona;
 import com.nexo.app.domain.User;
 import com.nexo.app.repository.AuthorityRepository;
 import com.nexo.app.repository.UserRepository;
@@ -9,6 +10,7 @@ import com.nexo.app.security.AuthoritiesConstants;
 import com.nexo.app.security.SecurityUtils;
 import com.nexo.app.service.dto.UserDTO;
 import com.nexo.app.service.util.RandomUtil;
+import com.nexo.app.web.rest.errors.NexoNotFoundException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +43,7 @@ public class UserService {
     private final AuthorityRepository authorityRepository;
 
     private final CacheManager cacheManager;
+    
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
         this.userRepository = userRepository;
@@ -292,4 +295,5 @@ public class UserService {
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE)).evict(user.getLogin());
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());
     }
+    
 }

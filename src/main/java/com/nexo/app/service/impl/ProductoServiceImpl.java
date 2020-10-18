@@ -1,8 +1,15 @@
 package com.nexo.app.service.impl;
 
+import com.nexo.app.service.PaisService;
+import com.nexo.app.service.PersonaService;
 import com.nexo.app.service.ProductoService;
+import com.nexo.app.service.UnidadMedidaService;
+import com.nexo.app.service.UtilsService;
 import com.nexo.app.config.Constants;
+import com.nexo.app.domain.Pais;
+import com.nexo.app.domain.Persona;
 import com.nexo.app.domain.Producto;
+import com.nexo.app.domain.UnidadMedida;
 import com.nexo.app.repository.ProductoRepository;
 import com.nexo.app.service.dto.ProductoDTO;
 import com.nexo.app.service.mapper.ProductoMapper;
@@ -20,6 +27,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -42,10 +50,27 @@ public class ProductoServiceImpl implements ProductoService {
 	private final ProductoRepository productoRepository;
 
 	private final ProductoMapper productoMapper;
+	
+	private final PersonaService personaService;
+	
+	private final UtilsService utilsService;
+	
+	private final UnidadMedidaService unidadmedidaService;
+	
+	private final PaisService paisService;
 
-	public ProductoServiceImpl(ProductoRepository productoRepository, ProductoMapper productoMapper) {
+	public ProductoServiceImpl(ProductoRepository productoRepository,
+			ProductoMapper productoMapper,
+			PersonaService personaService,
+			UtilsService utilsService,
+			UnidadMedidaService unidadmedidaService,
+			PaisService paisService) {
 		this.productoRepository = productoRepository;
 		this.productoMapper = productoMapper;
+		this.personaService=personaService;
+		this.utilsService=utilsService;
+		this.unidadmedidaService=unidadmedidaService;
+		this.paisService=paisService;
 	}
 
 	/**
@@ -114,5 +139,37 @@ public class ProductoServiceImpl implements ProductoService {
 				.collect(Collectors.toList());
 		Page<ProductoDTO> courseRes = new PageImpl<>(pro);
 		return courseRes;
+	}
+
+	@Override
+	public ProductoDTO crearProducto(ProductoDTO dto) throws NexoNotFoundException {
+		ZonedDateTime today=utilsService.giveToday();
+		Producto producto=new Producto();
+		Persona vendedor=personaService.getUserActual().orElseThrow(()->new NexoNotFoundException(Constants.ERROR_INTERNO, "Error en login"));
+		UnidadMedida unidad=unidadmedidaService.findById(dto.getUnidadMedidaId()).orElseThrow(()->new NexoNotFoundException(Constants.ERROR_INTERNO, "Error en la Unidad de medida"));
+		Pais origen=paisService.findById(dto.getElaboradoEnId()).orElseThrow(()->new NexoNotFoundException(Constants.ERROR_INTERNO, "Error en el país"));
+		producto.setFechaBd(today);
+		producto.setVendedor(vendedor);
+		producto.setUnidadMedida(unidad);
+		producto.setElaboradoEn(origen);
+		producto.setAlertaMinimo(dto.getAlertaMinimo());
+		producto.setCantidadDisponible(dto.getCantidadDisponible());
+		producto.setCodigo(dto.getCodigo());
+		producto.setCodigoBarra(dto.getCodigoBarra());
+		producto.setDescripcion(dto.getDescripcion());
+		producto.setEstado(Constants.ACTIVO);
+		producto.setNombre(dto.getNombre());
+		producto.setPrecioAlmayorDespuesde(dto.getPrecioAlmayorDespuesde());
+		producto.setPrecioCompraBruto(dto.getPrecioCompraBruto());
+		producto.setPrecioVentaTotalDetal(dto.getPrecioVentaTotalDetal());
+		producto.setPrecioVentaTotalMayor(dto.getPrecioVentaTotalMayor());
+		producto.setUnidadMedidaVendida(dto.getUnidadMedidaVendida());
+		productoRepository.save(producto);
+		return productoMapper.toDto(producto);
+	}
+
+	@Override
+	public Optional<Producto> findById(Long id) {
+		return productoRepository.findById(id);
 	}
 }

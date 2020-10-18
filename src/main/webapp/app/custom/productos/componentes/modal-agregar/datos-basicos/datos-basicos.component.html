@@ -1,80 +1,144 @@
 <!-- Formulario -->
-<!-- primera linea -->
-<div class="row margin-nexo pt-2">
-    <div class="col-6">
-        <label class="mb-0">Nombre</label>
-        <input type="text" class="form-control" placeholder="nombre del producto" />
+<form name="editForm" role="form" novalidate (ngSubmit)="saveProducto()" [formGroup]="editForm">
+    <!-- primera linea -->
+    <div class="row margin-nexo pt-2">
+        <div class="col-6">
+            <label class="mb-0">Nombre</label>
+            <input type="text" class="form-control" placeholder="nombre del producto" formControlName="nombre" />
+            <div
+                *ngIf="editForm.get('nombre').invalid && (editForm.get('nombre').dirty || editForm.get('nombre').touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('nombre').errors.required">
+                    Este campo es requerido.
+                </small>
+            </div>
+        </div>
+        <div class="col-3">
+            <label class="mb-0">Codigo interno</label>
+            <input type="text" class="form-control" placeholder="(opcional) codigo interno"
+                formControlName="codigoInterno" />
+
+        </div>
+        <div class="col-3">
+            <label class="mb-0">Codigo de Barra</label>
+            <input type="text" class="form-control" placeholder="(opcional) codigo de barra"
+                formControlName="codigoBarra" />
+        </div>
     </div>
-    <div class="col-3">
-        <label class="mb-0">Codigo interno</label>
-        <input type="text" class="form-control" placeholder="(opcional) codigo interno" />
+    <!-- fin primera linea -->
+    <!-- segunda linea -->
+    <div class="row margin-nexo pt-2">
+        <div class="col-12">
+            <label class="mb-0">Descripción</label>
+            <textarea name="" id="" cols="30" rows="3" class="form-control"
+                placeholder="Descripción detallada del producto a registrar" formControlName="descripcion"></textarea>
+            <div
+                *ngIf="editForm.get('descripcion').invalid && (editForm.get('descripcion').dirty || editForm.get('descripcion').touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('descripcion').errors.required">
+                    Este campo es requerido.
+                </small>
+            </div>
+        </div>
     </div>
-    <div class="col-3">
-        <label class="mb-0">Codigo de Barra</label>
-        <input type="text" class="form-control" placeholder="(opcional) codigo de barra" />
+    <!-- fin segunda linea -->
+    <!-- tercera linea -->
+    <div class="row margin-nexo pt-2">
+        <div class="col-3" *ngIf="unidadesMedidas?.length>0">
+            <label class="mb-0">Unidad-Medida</label>
+            <select class="custom-select" formControlName="unidadMedida">
+                <option *ngFor="let unidad of unidadesMedidas" value="{{unidad.id}}">{{unidad.nombre}}</option>
+            </select>
+            <div
+                *ngIf="editForm.get('unidadMedida').invalid && (editForm.get('unidadMedida').dirty || editForm.get('unidadMedida').touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('unidadMedida').errors.required">
+                    Este campo es requerido.
+                </small>
+            </div>
+        </div>
+        <div class="col-3">
+            <label class="mb-0">Unidad-Medida a vender</label>
+            <input type="number" class="form-control" placeholder="" value="1" formControlName="unidadVender" />
+            <div
+                *ngIf="editForm.get('unidadVender').invalid && (editForm.get('unidadVender').dirty || editForm.get('unidadVender').touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('unidadVender').errors.required">
+                    Este campo es requerido.
+                </small>
+            </div>
+        </div>
+        <div class="col-3" *ngIf="paises?.length>0">
+            <label class="mb-0">País de origen</label>
+            <select class="custom-select" formControlName="pais">
+                <option *ngFor="let pais of paises" value="{{pais.id}}">{{pais.nombre}}</option>
+            </select>
+            <div *ngIf="editForm.get('pais').invalid && (editForm.get('pais').dirty || editForm.get('pais').touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('pais').errors.required">
+                    Este campo es requerido.
+                </small>
+            </div>
+        </div>
+        <div class="col-3">
+            <label class="mb-0">Cantidad Disponible</label>
+            <input type="number" class="form-control" placeholder="" value="1" formControlName="cantidad" />
+            <div
+                *ngIf="editForm.get('cantidad').invalid && (editForm.get('cantidad').dirty || editForm.get('cantidad').touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('cantidad').errors.required">
+                    Este campo es requerido.
+                </small>
+            </div>
+        </div>
     </div>
+    <!-- fin tercera linea -->
+    <!-- cuarta linea -->
+    <div class="row margin-nexo pt-2">
+        <div class="col-3">
+            <label class="mb-0">Precio de compra</label>
+            <input type="number" class="form-control" placeholder="" formControlName="precioCompra" />
+            <div
+                *ngIf="editForm.get('precioCompra').invalid && (editForm.get('precioCompra').dirty || editForm.get('precioCompra').touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('precioCompra').errors.required">
+                    Este campo es requerido.
+                </small>
+            </div>
+        </div>
+        <div class="col-3">
+            <label class="mb-0">Precio al detal </label>
+            <input type="number" class="form-control" placeholder="" formControlName="precioDetal" />
+            <div
+                *ngIf="editForm.get('precioDetal').invalid && (editForm.get('precioDetal').dirty || editForm.get('precioDetal').touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('precioDetal').errors.required">
+                    Este campo es requerido.
+                </small>
+            </div>
+        </div>
+        <div class="col-3">
+            <label class="mb-0">Precio al mayor </label>
+            <input type="number" class="form-control" placeholder="(opcional)" formControlName="precioMayor" />
+        </div>
+        <div class="col-3">
+            <label class="mb-0">Precio al mayor después de:</label>
+            <input type="number" class="form-control" placeholder="(opcional)" formControlName="mayorDespues" />
+        </div>
+    </div>
+    <!-- fin cuarta linea -->
+    <!-- quinta linea -->
+    <div class="row margin-nexo pt-2">
+        <div class="col-8">
+            <label class="mb-0">Imagen</label>
+            <input id="input-2" name="input2[]" type="file" class="file" data-show-upload="false"
+                data-show-caption="true" multiple formControlName="imagen" (change)="selectArchivo($event)">
+        </div>
+        <div class="col-4">
+            <label class="mb-0">alertar-En:</label>
+            <input type="number" class="form-control" placeholder="(opcional)" formControlName="alerta" />
+        </div>
+    </div>
+    <!-- Fin de quinta linea -->
+</form>
+<!-- Botones -->
+<div class="text-right">
+
+    <button type="button" class="btn btn-primary ml-2 button-nexo mr-2" [disabled]="editForm.invalid"
+        (click)="saveProducto()">Guardar</button>
 </div>
-<!-- fin primera linea -->
-<!-- segunda linea -->
-<div class="row margin-nexo pt-2">
-    <div class="col-12">
-        <label class="mb-0">Descripción</label>
-        <textarea name="" id="" cols="30" rows="3" class="form-control"
-            placeholder="Descripción detallada del producto a registrar"></textarea>
-    </div>
-</div>
-<!-- fin segunda linea -->
-<!-- tercera linea -->
-<div class="row margin-nexo pt-2">
-    <div class="col-3" *ngIf="unidadesMedidas?.length>0">
-        <label class="mb-0">Unidad-Medida</label>
-        <select class="custom-select">
-            <option *ngFor="let unidad of unidadesMedidas" value="{{unidad.id}}">{{unidad.nombre}}</option>
-        </select>
-    </div>
-    <div class="col-3">
-        <label class="mb-0">Unidad-Medida a vender</label>
-        <input type="text" class="form-control" placeholder="" value="1" />
-    </div>
-    <div class="col-3" *ngIf="paises?.length>0">
-        <label class="mb-0">País de origen</label>
-        <select class="custom-select">
-            <option *ngFor="let pais of paises" value="{{pais.id}}">{{pais.nombre}}</option>
-        </select>
-    </div>
-    <div class="col-3">
-        <label class="mb-0">Cantidad Disponible</label>
-        <input type="text" class="form-control" placeholder="" value="1" />
-    </div>
-</div>
-<!-- fin tercera linea -->
-<!-- cuarta linea -->
-<div class="row margin-nexo pt-2">
-    <div class="col-3">
-        <label class="mb-0">Precio de compra</label>
-        <input type="text" class="form-control" placeholder="" />
-    </div>
-    <div class="col-3">
-        <label class="mb-0">Precio al detal </label>
-        <input type="text" class="form-control" placeholder="" />
-    </div>
-    <div class="col-3">
-        <label class="mb-0">Precio al mayor </label>
-        <input type="text" class="form-control" placeholder="" />
-    </div>
-    <div class="col-3">
-        <label class="mb-0">Precio al mayor después de:</label>
-        <input type="text" class="form-control" placeholder="(opcional)" />
-    </div>
-</div>
-<!-- fin cuarta linea -->
-<!-- quinta linea -->
-<div class="row margin-nexo pt-2">
-    <div class="col-12">
-        <label class="mb-0">Imagen</label>
-        <input id="input-2" name="input2[]" type="file" class="file" data-show-upload="false" data-show-caption="true"
-            multiple>
-    </div>
-</div>
-<!-- Fin de quinta linea -->
+<!-- Fin de botones -->
+
 <!-- fin de formulario -->

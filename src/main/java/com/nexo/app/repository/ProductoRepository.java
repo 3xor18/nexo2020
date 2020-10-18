@@ -23,4 +23,10 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
 	 */
 	@Query("select p from Producto p where p.vendedor.user.login=?#{principal.username}")
 	Optional<Page<Producto>> getAllMyProducts(Pageable pageable);
+	
+	/**
+	 * busca pro id
+	 */
+	@Query("select p from Producto p where p.id=?1")
+	Optional<Producto> findById(Long idProducto);
 }

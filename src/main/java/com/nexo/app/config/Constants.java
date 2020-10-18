@@ -15,6 +15,17 @@ public final class Constants {
     // Codigos de excepcion
     public static final String NO_ENCONTRADO="404";
     public static final String ERROR_INTERNO="500";
+    
+  
+    // Tipo de archivos
+    public static final String IMAGEN_PRODUCTO="IMAGEN_PRODUCTO";
+    public static final String IMAGEN_PERFIL="IMAGEN_PERFIL";
+    
+    // estado
+    public static final String ACTIVO="ACTIVO";
+    public static final String INACTIVO="INACTIVO";
+    
+    
 
     private Constants() {
     }

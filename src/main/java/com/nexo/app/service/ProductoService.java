@@ -1,5 +1,6 @@
 package com.nexo.app.service;
 
+import com.nexo.app.domain.Producto;
 import com.nexo.app.service.dto.ProductoDTO;
 import com.nexo.app.web.rest.errors.NexoNotFoundException;
 
@@ -50,4 +51,17 @@ public interface ProductoService {
 	 * @throws NexoNotFoundException si no tiene productos registrados
 	 */
 	Page<ProductoDTO> getMyProducts(Integer numberPage) throws NexoNotFoundException;
+	
+	/**
+	 * @param productoDTO
+	 * @return ProductoDTO
+	 * @throws NexoNotFoundException 
+	 */
+	ProductoDTO crearProducto(ProductoDTO dto) throws NexoNotFoundException;
+	
+	/**
+	 * @param id
+	 * @return producto por id
+	 */
+	Optional<Producto> findById(Long id);
 }

@@ -1,6 +1,7 @@
 package com.nexo.app.service;
 
 import com.nexo.app.service.dto.ProductoImagenesDTO;
+import com.nexo.app.web.rest.errors.NexoNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,4 +41,11 @@ public interface ProductoImagenesService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    /**
+     * @param dtoIn
+     * @return agrega una imagen a un producto
+     * @throws NexoNotFoundException 
+     */
+    ProductoImagenesDTO agregarImagen(ProductoImagenesDTO dtoIn) throws NexoNotFoundException;
 }

@@ -42,6 +42,7 @@ export class ListadoProductosComponent implements OnInit {
     this.accountService.identity().subscribe(account => {
       this.currentAccount = account;
     });
+    this.productoService.notificarCambio.subscribe(prod => this.productos.push(prod));
   }
 
   trackId(index: number, item: IProducto) {
